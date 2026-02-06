@@ -1,0 +1,27 @@
+{
+  "BIS_CentralBankPolicyRate": {
+    "timestamp": "2026-02-04T09:04:07+00:00",
+    "last_check": "2026-02-06T14:08:58.031269",
+    "raw_value": "Wed, 04 Feb 2026 09:04:07 GMT"
+  },
+  "usa_child_birth": {
+    "timestamp": "2024-12-11T21:23:41+00:00",
+    "last_check": "2026-02-06T14:09:00.142666",
+    "raw_value": "Wed, 11 Dec 2024 21:23:41 GMT"
+  },
+  "FAO_Currency_statvar": {
+    "timestamp": "2025-10-13T07:41:29+00:00",
+    "last_check": "2026-02-06T14:09:41.223447",
+    "raw_value": "Mon, 13 Oct 2025 07:41:29 GMT"
+  },
+  "CDC500": {
+    "timestamp": "2025-12-04T16:05:06",
+    "last_check": "2026-02-06T14:09:43.100985",
+    "raw_value": "2025-12-04 16:05:06 (Unix: 1764844506)"
+  },
+  "FBIGovCrime": {
+    "timestamp": "2025-08-05T00:00:00",
+    "last_check": "2026-02-06T14:09:37.192691",
+    "raw_value": "August 5, 2025"
+  }
+}

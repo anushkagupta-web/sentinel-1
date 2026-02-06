@@ -1,0 +1,68 @@
+# =============================================================================
+# Core Dependencies
+# =============================================================================
+
+# HTTP requests library
+requests>=2.28.0
+
+# YAML configuration parsing
+PyYAML>=6.0
+
+# Date parsing utilities
+python-dateutil>=2.8.0
+
+# =============================================================================
+# HTML/Web Scraping Dependencies
+# =============================================================================
+
+# HTML parsing library
+beautifulsoup4>=4.11.0
+
+# Fast XML/HTML parser (used by BeautifulSoup)
+lxml>=4.9.0
+
+# =============================================================================
+# Browser Automation (Selenium)
+# =============================================================================
+
+# Selenium WebDriver for browser automation
+selenium>=4.8.0
+
+# Automatic WebDriver management (downloads ChromeDriver automatically)
+webdriver-manager>=4.0.0
+
+# =============================================================================
+# Development & Testing Dependencies
+# =============================================================================
+
+# Testing framework
+pytest>=7.0.0
+
+# Test coverage reporting
+pytest-cov>=4.0.0
+
+# Mock HTTP responses for testing
+responses>=0.22.0
+
+# HTTP mocking library
+requests-mock>=1.10.0
+
+# =============================================================================
+# LLM Verification (Groq API)
+# =============================================================================
+
+# Groq API client for timestamp verification
+groq>=0.4.0
+
+# Environment variable management
+python-dotenv>=1.0.0
+
+# =============================================================================
+# Optional Dependencies
+# =============================================================================
+
+# For colored console output (optional)
+colorama>=0.4.6
+
+# For progress bars (optional)
+tqdm>=4.65.0

@@ -1,0 +1,29 @@
+# Application Settings
+
+# HTTP Settings
+http:
+  timeout: 30
+  max_retries: 3
+  retry_delay: 2
+  user_agent: "Sentinel-Monitor/1.0 (Data Commons Update Checker)"
+
+# Selenium Settings
+selenium:
+  headless: true
+  wait_timeout: 45
+  page_load_timeout: 60
+
+# Logging Settings
+logging:
+  level: INFO
+  format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+  file: "sentinel.log"
+
+# State Settings
+state:
+  file: "state/last_checked.json"
+
+# Output Settings
+output:
+  csv_file: "output.csv"
+  include_headers: true

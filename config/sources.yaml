@@ -1,0 +1,76 @@
+# Data Source Configuration
+# Maps each source to its retrieval method and URLs
+
+BIS_CentralBankPolicyRate:
+  import_name: "BIS Central Bank Policy Rate"
+  dcid: "BIS_CentralBankPolicyRate"
+  method: http_head
+  data_url: "https://data.bis.org/static/bulk/WS_CBPOL_csv_flat.zip"
+  script_url: "https://github.com/datacommonsorg/data/blob/master/util/download_util_script.py"
+  selector: null
+
+usa_child_birth:
+  import_name: "USA Child Birth"
+  dcid: "usa_child_birth"
+  method: http_head
+  data_url: "https://data.cdc.gov/api/views/hmz2-vwda/rows.csv?accessType=DOWNLOAD"
+  script_url: "https://github.com/datacommonsorg/data/blob/master/util/download_util_script.py"
+  selector: null
+
+FBIGovCrime:
+  import_name: "FBI Gov Crime"
+  dcid: "FBIGovCrime"
+  method: selenium
+  data_url: "https://cde.ucr.cjis.gov/LATEST/webapp/#/pages/downloads"
+  script_url: "https://github.com/datacommonsorg/data/blob/master/statvar_imports/fbi/fbigovcrime/fbigovcrime_downlod_script.py"
+  selector: "span.last-updated, div.update-date, .data-update-info"
+  wait_timeout: 45
+  page_load_timeout: 90
+
+USA_DOL_Wages:
+  import_name: "USA DOL Wages"
+  dcid: "USA_DOL_Wages"
+  method: beautifulsoup
+  data_url: "https://www.dol.gov/agencies/whd/state/minimum-wage/history"
+  script_url: "https://github.com/datacommonsorg/data/blob/master/statvar_imports/usa_dol/minimum_wage/usa_dol_wages_download_script.py"
+  selector: "time, .date-display-single, .field--name-changed"
+  date_patterns:
+    - "Updated:\\s*(\\w+\\s+\\d{1,2},?\\s+\\d{4})"
+    - "Last\\s+(?:Updated|Modified):\\s*(.*?)(?:<|$)"
+    - "(\\w+\\s+\\d{1,2},?\\s+\\d{4})"
+
+mongolia_imports:
+  import_name: "Mongolia Imports"
+  dcid: "mongolia_imports"
+  method: api
+  data_url: "https://opendata.1212.mn/api/Data"
+  script_url: "https://github.com/datacommonsorg/data/blob/master/statvar_imports/mongolia_imports/common_download_script.py"
+  timestamp_field: "updated_at"
+  response_format: json
+  http_method: HEAD  # API doesn't accept GET, use HEAD to get Last-Modified header
+  fallback_fields:
+    - "lastModified"
+    - "modified"
+    - "updatedAt"
+    - "last_updated"
+
+FAO_Currency_statvar:
+  import_name: "FAO Currency Statvar"
+  dcid: "FAO_Currency_statvar"
+  method: cli
+  data_url: "https://bulks-faostat.fao.org/production/Exchange_rate_E_All_Data.zip"
+  script_url: "https://github.com/datacommonsorg/data/blob/master/statvar_imports/fao_currency_and_exchange_rate/fao_currency_statvar/download.sh"
+  command: "curl -sI"
+
+CDC500:
+  import_name: "CDC 500 Places"
+  dcid: "CDC500"
+  method: api
+  data_url: "https://chronicdata.cdc.gov/api/views/swc5-untb.json"
+  script_url: "https://github.com/datacommonsorg/data/blob/master/scripts/us_cdc/500_places/download_bulk.py"
+  timestamp_field: "rowsUpdatedAt"
+  response_format: json
+  fallback_fields:
+    - "dataUpdatedAt"
+    - "metadataUpdatedAt"
+    - "lastModified"
