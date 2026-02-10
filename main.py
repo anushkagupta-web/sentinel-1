@@ -77,6 +77,8 @@ class DateParser:
         "%b %d %Y",
         "%d %B %Y",
         "%d %b %Y",
+        "%B %Y",  # "January 2025" (month year only)
+        "%b %Y",  # "Jan 2025" (abbreviated month year)
         "%a, %d %b %Y %H:%M:%S GMT",
         "%a, %d %b %Y %H:%M:%S %Z",
     ]
@@ -304,18 +306,23 @@ class APIHandler(BaseHandler):
                     self.logger.warning(f"{method} not allowed, trying next method...")
                     continue
 
-                response.raise_for_status()
+                # Check for Last-Modified header in any response
+                last_modified = response.headers.get('Last-Modified')
+                if last_modified:
+                    self._raw_timestamp = last_modified
+                    try:
+                        return parsedate_to_datetime(last_modified)
+                    except (ValueError, TypeError):
+                        return self.date_parser.parse(last_modified)
 
-                # For HEAD requests, try to get timestamp from headers
+                # For HEAD requests, we can only get headers
                 if method == 'HEAD':
-                    last_modified = response.headers.get('Last-Modified')
-                    if last_modified:
-                        self._raw_timestamp = last_modified
-                        try:
-                            return parsedate_to_datetime(last_modified)
-                        except (ValueError, TypeError):
-                            return self.date_parser.parse(last_modified)
                     return None
+
+                # Check if response is successful before parsing body
+                if response.status_code >= 400:
+                    self.logger.warning(f"{method} returned {response.status_code}, trying next method...")
+                    continue
 
                 return self._parse_json_response(response.text)
 
@@ -443,6 +450,9 @@ class BS4Handler(BaseHandler):
         patterns = [
             r'Updated[:\s]+(\w+\s+\d{1,2},?\s+\d{4})',
             r'Last\s+(?:Updated|Modified)[:\s]+(\w+\s+\d{1,2},?\s+\d{4})',
+            r'last\s+revised\s+(?:in\s+)?(\w+\s+\d{4})',  # "last revised in January 2025"
+            r'revised\s+(?:in\s+)?(\w+\s+\d{4})',
+            r'revised[:\s]+(\w+\s+\d{1,2},?\s+\d{4})',
         ]
         for pattern in patterns:
             match = re.search(pattern, raw_html, re.IGNORECASE)
@@ -595,6 +605,8 @@ class SeleniumHandler(BaseHandler):
                 r'Data\s+(?:as\s+of|through)[\s:]+(\w+\s+\d{1,2},?\s+\d{4})',
                 r'(?:Released|Published)[\s:]+(\w+\s+\d{1,2},?\s+\d{4})',
                 r'(?:Data\s+)?(?:Current|Available)\s+(?:as\s+of|through)[\s:]+(\w+\s+\d{1,2},?\s+\d{4})',
+                r'last\s+revised\s+(?:in\s+)?(\w+\s+\d{4})',  # "last revised in January 2025"
+                r'revised\s+(?:in\s+)?(\w+\s+\d{4})',  # "revised in January 2025"
                 r'(\w+\s+\d{1,2},?\s+\d{4})',  # General date like "January 15, 2026"
                 r'(\d{1,2}/\d{1,2}/\d{4})',     # MM/DD/YYYY
                 r'(\d{4}-\d{2}-\d{2})',          # YYYY-MM-DD

@@ -30,29 +30,23 @@ FBIGovCrime:
 USA_DOL_Wages:
   import_name: "USA DOL Wages"
   dcid: "USA_DOL_Wages"
-  method: beautifulsoup
+  method: selenium
   data_url: "https://www.dol.gov/agencies/whd/state/minimum-wage/history"
   script_url: "https://github.com/datacommonsorg/data/blob/master/statvar_imports/usa_dol/minimum_wage/usa_dol_wages_download_script.py"
   selector: "time, .date-display-single, .field--name-changed"
-  date_patterns:
-    - "Updated:\\s*(\\w+\\s+\\d{1,2},?\\s+\\d{4})"
-    - "Last\\s+(?:Updated|Modified):\\s*(.*?)(?:<|$)"
-    - "(\\w+\\s+\\d{1,2},?\\s+\\d{4})"
+  wait_timeout: 30
+  page_load_timeout: 60
+  # Note: Using Selenium because DOL website has bot protection (Challenge Validation)
+  # that blocks BeautifulSoup/requests
 
 mongolia_imports:
   import_name: "Mongolia Imports"
   dcid: "mongolia_imports"
-  method: api
-  data_url: "https://opendata.1212.mn/api/Data"
+  method: beautifulsoup
+  data_url: "https://opendata.1212.mn/"
   script_url: "https://github.com/datacommonsorg/data/blob/master/statvar_imports/mongolia_imports/common_download_script.py"
-  timestamp_field: "updated_at"
-  response_format: json
-  http_method: HEAD  # API doesn't accept GET, use HEAD to get Last-Modified header
-  fallback_fields:
-    - "lastModified"
-    - "modified"
-    - "updatedAt"
-    - "last_updated"
+  # Note: Original API endpoint (https://opendata.1212.mn/api/Data) doesn't expose
+  # timestamp metadata. Using main website to scrape any visible dates.
 
 FAO_Currency_statvar:
   import_name: "FAO Currency Statvar"
