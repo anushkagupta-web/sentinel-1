@@ -62,7 +62,7 @@ cd sentinel
 python -m venv venv
 
 # Windows
-venv\Scripts\activate
+.venv\Scripts\activate
 
 # Linux/Mac
 source venv/bin/activate
