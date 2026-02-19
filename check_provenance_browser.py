@@ -23,7 +23,7 @@ load_dotenv()
 
 CONFIG = {
     "input_file": "Provenance.csv",
-    "output_file": "output_browser.csv",
+    "output_file": "output1.csv",
     "max_workers": 5,
     "model": "groq/compound",  # or "groq/compound-mini" for faster/cheaper
 }

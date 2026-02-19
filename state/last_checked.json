@@ -1,32 +1,32 @@
 {
   "BIS_CentralBankPolicyRate": {
-    "timestamp": "2026-02-04T09:04:07+00:00",
-    "last_check": "2026-02-10T10:46:11.678942",
-    "raw_value": "Wed, 04 Feb 2026 09:04:07 GMT"
+    "timestamp": "2026-02-11T09:22:49+00:00",
+    "last_check": "2026-02-16T13:17:28.483087",
+    "raw_value": "Wed, 11 Feb 2026 09:22:49 GMT"
   },
   "usa_child_birth": {
     "timestamp": "2024-12-11T21:23:41+00:00",
-    "last_check": "2026-02-10T10:46:14.047671",
+    "last_check": "2026-02-16T13:17:32.732193",
     "raw_value": "Wed, 11 Dec 2024 21:23:41 GMT"
   },
   "FAO_Currency_statvar": {
     "timestamp": "2025-10-13T07:41:29+00:00",
-    "last_check": "2026-02-10T10:47:20.402838",
+    "last_check": "2026-02-16T13:19:02.810388",
     "raw_value": "Mon, 13 Oct 2025 07:41:29 GMT"
   },
   "CDC500": {
     "timestamp": "2025-12-04T16:05:06",
-    "last_check": "2026-02-10T10:47:23.216771",
-    "raw_value": "2025-12-04 16:05:06 (Unix: 1764844506)"
+    "last_check": "2026-02-16T13:19:05.614603",
+    "raw_value": "1764844506"
   },
   "FBIGovCrime": {
     "timestamp": "2025-08-05T00:00:00",
-    "last_check": "2026-02-10T10:46:51.917129",
+    "last_check": "2026-02-16T13:16:41.781728",
     "raw_value": "August 5, 2025"
   },
   "USA_DOL_Wages": {
-    "timestamp": "2025-01-10T00:00:00",
-    "last_check": "2026-02-10T10:47:16.209052",
+    "timestamp": "2025-01-16T00:00:00",
+    "last_check": "2026-02-16T13:17:02.710394",
     "raw_value": "January 2025"
   }
 }

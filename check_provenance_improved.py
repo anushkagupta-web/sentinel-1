@@ -460,6 +460,17 @@ def main():
 
     # Save failed URLs to error.csv
     df_errors = df_out[df_out["status"] != "SUCCESS"][["id", "name", "provenance_url", "status", "error"]]
+
+    # Sanitize error text to avoid multi-line or extremely long analysis blobs
+    # Replace newlines with spaces and truncate to a reasonable length so CSV viewers
+    # show complete rows rather than a single huge multi-line cell.
+    df_errors["error"] = (
+        df_errors["error"].fillna("").astype(str)
+        .str.replace(r"[\r\n]+", " ", regex=True)
+        .str.strip()
+        .str.slice(0, 500)
+    )
+
     df_errors.to_csv("error.csv", index=False)
     print(f"   Failed URLs saved to: error.csv ({len(df_errors)} rows)")
 
