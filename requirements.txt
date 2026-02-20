@@ -5,6 +5,9 @@
 # HTTP requests library
 requests>=2.28.0
 
+# HTTP client library (used for retry logic and SSL warnings)
+urllib3>=2.0.0
+
 # YAML configuration parsing
 PyYAML>=6.0
 

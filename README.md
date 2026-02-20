@@ -1,100 +1,113 @@
-# Sentinel - Data Source Monitoring Agent
+# Sentinel - Provenance URL Timestamp Checker
 
-Sentinel is an automated monitoring agent that detects updates in external data sources by examining metadata (timestamps, ETags) **without downloading entire datasets**. It also uses **Groq LLM** to verify that the extracted timestamp is actually the "last modified" date, providing confidence scores and reasoning for each verification.
+Sentinel is an automated tool that extracts **last modified timestamps** from provenance URLs using a **multi-strategy approach**. It tries 14 different methods to maximize success rate without downloading entire datasets.
+
+## Main Script
+
+**`check_provenance_improved.py`** - The primary script for checking provenance URLs.
+
+- **Input**: `Provenance.csv` (with columns: `id`, `name`, `provenance_url`, etc.)
+- **Output**:
+  - `outp.csv` - Successfully fetched URLs with timestamps
+  - `failed_urls.csv` - URLs that could not be processed
 
 ## Features
 
-- **Multiple Retrieval Methods**: HTTP HEAD, REST API, BeautifulSoup, Selenium, CLI
+- **14 Retrieval Methods** in 3 tiers:
+  - **TIER 1 (Fast)**: HTTP HEAD, HTML Scraping, Sitemap, RSS/Atom, Official APIs
+  - **TIER 2 (Archives)**: Wayback Machine, URL Variations, Memento, Archive.today, Common Crawl, UK Archive
+  - **TIER 3 (Fallback)**: News/Press Release scraping, Direct HTTP with User-Agent rotation, Groq Browser automation
 - **Smart Date Parsing**: Supports 18+ date formats including ISO, Unix timestamps, HTTP dates
-- **LLM Verification**: Uses Groq API (llama-3.3-70b-versatile model) to verify extracted timestamps with confidence scores
-- **State Management**: Tracks previous timestamps to detect changes via JSON persistence
-- **CSV Export**: Exports results with verification details
-- **Configurable**: YAML-based configuration for sources and settings
-- **Concurrent Processing**: Optional Groq Compound feature for parallel source checking
-- **Modular Architecture**: Clean separation of concerns with Factory and Strategy patterns
+- **Concurrent Processing**: Multi-threaded URL checking (configurable workers)
+- **Automatic Fallback**: Tries each method until one succeeds
+- **Detailed Logging**: Shows method used for each successful fetch
 
 ## Project Structure
 
 ```
 sentinel/
-├── config/
-│   ├── sources.yaml          # Data source configurations (7 sources)
-│   └── settings.yaml         # Application settings (timeouts, logging)
-├── core/
-│   ├── sentinel.py           # Main orchestrator class (~300 lines)
-│   ├── registry.py           # Source registry & handler factory (~110 lines)
-│   └── state_manager.py      # Thread-safe state persistence (~125 lines)
-├── handlers/
-│   ├── base_handler.py       # Abstract base handler (~85 lines)
-│   ├── http_handler.py       # HTTP HEAD requests (~95 lines)
-│   ├── api_handler.py        # REST API JSON/XML parsing (~170 lines)
-│   ├── bs4_handler.py        # BeautifulSoup HTML scraping (~215 lines)
-│   ├── selenium_handler.py   # Headless Chrome automation (~170 lines)
-│   └── cli_handler.py        # Shell command wrapper (~97 lines)
-├── models/
-│   ├── source.py             # DataSource dataclass (~60 lines)
-│   └── check_result.py       # CheckResult dataclass (~80 lines)
-├── utils/
-│   ├── date_parser.py        # Flexible date parsing (~180 lines)
-│   ├── groq_verifier.py      # Groq LLM verification (~290 lines)
-│   └── logger.py             # Logging configuration (~70 lines)
-├── scripts/
-│   └── run_check.py          # CLI interface (~130 lines)
-├── state/
-│   └── last_checked.json     # Persistent timestamp storage
-├── tests/
-│   ├── conftest.py           # Pytest fixtures
-│   ├── test_sentinel.py      # Integration tests
-│   ├── test_date_parser.py   # Date parsing tests
-│   └── test_handlers.py      # Handler unit tests
-├── main.py                   # Monolithic entry point (alternative)
-├── __init__.py               # Package initialization
-├── .env                      # Environment variables (API keys)
-├── .env.example              # Template for environment variables
-├── .gitignore
-├── requirements.txt
-├── output.csv                # Default results output
-├── Provenance.csv            # Input data for provenance checking
-├── Provenance.md             # Markdown version of provenance data
+├── check_provenance_improved.py  # MAIN SCRIPT - Multi-strategy URL checker (~870 lines)
+├── Provenance.csv                # INPUT - Provenance URLs to check
+├── outp.csv                      # OUTPUT - Successfully fetched timestamps
+├── failed_urls.csv               # OUTPUT - Failed URLs with errors
 │
-│   # Experimental Scripts (Groq Compound Integration)
-├── check_provenance_browser.py   # Groq Compound with browser automation
-├── check_provenance_final.py     # Enhanced final version
-├── check_provenance_hybrid.py    # Hybrid: BS4 + Groq + Browser fallback
-├── check_provenance_improved.py  # Multi-strategy approach
-└── check_provenance_urls.py      # URL checking variant
+├── config/
+│   ├── sources.yaml              # Data source configurations
+│   └── settings.yaml             # Application settings (timeouts, logging)
+├── core/
+│   ├── sentinel.py               # Orchestrator class (alternative approach)
+│   ├── registry.py               # Source registry & handler factory
+│   └── state_manager.py          # Thread-safe state persistence
+├── handlers/
+│   ├── base_handler.py           # Abstract base handler
+│   ├── http_handler.py           # HTTP HEAD requests
+│   ├── api_handler.py            # REST API JSON/XML parsing
+│   ├── bs4_handler.py            # BeautifulSoup HTML scraping
+│   ├── selenium_handler.py       # Headless Chrome automation
+│   └── cli_handler.py            # Shell command wrapper
+├── models/
+│   ├── source.py                 # DataSource dataclass
+│   └── check_result.py           # CheckResult dataclass
+├── utils/
+│   ├── date_parser.py            # Flexible date parsing
+│   ├── groq_verifier.py          # Groq LLM verification
+│   └── logger.py                 # Logging configuration
+├── scripts/
+│   └── run_check.py              # CLI interface
+├── state/
+│   └── last_checked.json         # Persistent timestamp storage
+├── tests/
+│   ├── conftest.py               # Pytest fixtures
+│   ├── test_sentinel.py          # Integration tests
+│   ├── test_date_parser.py       # Date parsing tests
+│   └── test_handlers.py          # Handler unit tests
+├── main.py                       # Monolithic entry point (alternative)
+├── __init__.py                   # Package initialization
+├── .env                          # Environment variables (GROQ_API_KEY)
+├── .env.example                  # Template for environment variables
+├── .gitignore
+└── requirements.txt
 ```
 
-## Architecture & Design Patterns
+## Architecture
 
 ```
 ┌─────────────────────────────────────────────────────────────┐
-│                    SENTINEL ARCHITECTURE                     │
+│           PROVENANCE CHECKER ARCHITECTURE                    │
 └─────────────────────────────────────────────────────────────┘
 
-┌─────────────┐     ┌─────────────┐     ┌─────────────────────┐
-│   Sentinel  │────▶│  Registry   │────▶│      Handlers       │
-│ (Orchestrator)    │  (Factory)  │     │ (Strategy Pattern)  │
-└─────────────┘     └─────────────┘     └─────────────────────┘
-       │                                         │
-       │            ┌─────────────┐              │
-       │────────────│StateManager │◀─────────────│
-       │            │  (State)    │              │
-       │            └─────────────┘              │
-       │                                         │
-       ▼                                         ▼
-┌─────────────┐                         ┌─────────────────────┐
-│GroqVerifier │                         │    CheckResult      │
-│ (Decorator) │                         │    (DataClass)      │
-└─────────────┘                         └─────────────────────┘
+┌─────────────────┐     ┌──────────────────────────────────────┐
+│  Provenance.csv │────▶│   check_provenance_improved.py       │
+│  (Input URLs)   │     │   - ThreadPoolExecutor (5 workers)   │
+└─────────────────┘     │   - 13 methods in priority order     │
+                        └──────────────────────────────────────┘
+                                         │
+         ┌───────────────────────────────┼───────────────────────────────┐
+         │                               │                               │
+         ▼                               ▼                               ▼
+┌─────────────────┐           ┌─────────────────┐           ┌─────────────────┐
+│   TIER 1: Fast  │           │  TIER 2: Archive │           │  TIER 3: Fallback│
+│  - HTTP Headers │           │  - Wayback       │           │  - News/Releases │
+│  - HTML Scraping│           │  - URL Variations│           │  - Direct HTTP   │
+│  - Sitemap      │           │  - Memento       │           │  - Groq Browser  │
+│  - RSS/Atom     │           │  - Archive.today │           └─────────────────┘
+│  - Official APIs│           │  - Common Crawl  │
+└─────────────────┘           │  - UK Archive    │
+                              └─────────────────┘
+                                         │
+                        ┌────────────────┴────────────────┐
+                        ▼                                 ▼
+               ┌─────────────────┐               ┌─────────────────┐
+               │    outp.csv     │               │ failed_urls.csv │
+               │   (SUCCESS)     │               │    (FAILED)     │
+               └─────────────────┘               └─────────────────┘
 ```
 
-**Design Patterns Used:**
-- **Factory Pattern**: SourceRegistry creates appropriate handlers based on method
-- **Strategy Pattern**: Different handlers implement different retrieval strategies
-- **Template Method Pattern**: BaseHandler defines interface, subclasses implement details
-- **State Pattern**: StateManager handles persistent state with thread-safety
-- **Decorator Pattern**: Groq verification wraps handler results
+**Key Design Decisions:**
+- **Tiered Approach**: Fast methods first, then archives, then fallbacks
+- **Early Exit**: Returns as soon as any method succeeds
+- **Concurrent Processing**: ThreadPoolExecutor for parallel URL checking
+- **Graceful Degradation**: Captures all errors, continues with next method
 
 ## Installation
 
@@ -140,29 +153,47 @@ GROQ_API_KEY=your_groq_api_key_here
 
 ## Usage
 
-### Command Line Interface
+### Quick Start
 
 ```bash
-# Check all sources
+# Run the main provenance checker
+python check_provenance_improved.py
+```
+
+This will:
+1. Read URLs from `Provenance.csv`
+2. Check each URL using 14 different methods
+3. Save successful results to `outp.csv`
+4. Save failed URLs to `failed_urls.csv`
+
+### Configuration
+
+Edit the `CONFIG` dict in `check_provenance_improved.py`:
+
+```python
+CONFIG = {
+    "input_file": "Provenance.csv",    # Input CSV file
+    "output_file": "outp.csv",         # Success output file
+    "failed_file": "failed_urls.csv",  # Failed URLs file
+    "max_workers": 5,                  # Concurrent threads
+    "timeout": 30,                     # Request timeout (seconds)
+    "delay_min": 1,                    # Min delay between requests
+    "delay_max": 2,                    # Max delay between requests
+    "use_groq_fallback": False,        # Enable Groq browser (needs API key)
+}
+```
+
+### Alternative Scripts
+
+```bash
+# CLI interface for modular sentinel
 python scripts/run_check.py
 
 # Check specific source by DCID
 python scripts/run_check.py --dcid BIS_CentralBankPolicyRate
-
-# List all available sources
-python scripts/run_check.py --list
-
-# Disable LLM verification (faster, no API calls)
-python scripts/run_check.py --no-verify
-
-# Verbose mode for debugging
-python scripts/run_check.py -v
-
-# Custom output file
-python scripts/run_check.py --output results.csv
 ```
 
-### Python Module
+### Python Module (Alternative)
 
 ```python
 from core.sentinel import Sentinel
@@ -173,179 +204,206 @@ sentinel = Sentinel(enable_verification=True)
 # Check all sources
 results = sentinel.check_all_sources()
 
-# Check specific source
-result = sentinel.check_for_updates("BIS_CentralBankPolicyRate")
-
 # Export to CSV
 sentinel.export_to_csv(results, "output.csv")
 ```
 
-### Experimental Scripts
+## Input/Output Format
 
-```bash
-# Groq Compound with browser automation
-python check_provenance_browser.py
+### Input: `Provenance.csv`
 
-# Hybrid approach (BS4 + Groq validation + Browser fallback)
-python check_provenance_hybrid.py
+| Column | Description |
+|--------|-------------|
+| `id` | Unique identifier (e.g., `dc/base/MSTEP_3-8Grades`) |
+| `name` | Human-readable name |
+| `provenance_url` | URL to check for timestamp |
+| `provenance_description` | Description of the data source |
+| ... | Other metadata columns |
 
-# Multi-strategy improved version
-python check_provenance_improved.py
-```
+### Output: `outp.csv`
 
-## Available Data Sources
-
-| DCID | Name | Method | Description |
-|------|------|--------|-------------|
-| `BIS_CentralBankPolicyRate` | BIS Central Bank Policy Rate | HTTP HEAD | Bank for International Settlements policy rates ZIP file |
-| `usa_child_birth` | USA Child Birth | HTTP HEAD | CDC birth data CSV |
-| `FBIGovCrime` | FBI Gov Crime | Selenium | FBI crime statistics (JavaScript-heavy site) |
-| `USA_DOL_Wages` | USA DOL Wages | Selenium | Labor department minimum wage history (bot protection) |
-| `mongolia_imports` | Mongolia Imports | BeautifulSoup | Mongolia open data portal |
-| `FAO_Currency_statvar` | FAO Currency Statvar | CLI | FAO currency exchange rate ZIP |
-| `CDC500` | CDC 500 Places | API | CDC 500 Places health data JSON API |
+| Column | Description |
+|--------|-------------|
+| `id` | Source identifier |
+| `name` | Source name |
+| `provenance_url` | Checked URL |
+| `last_modified` | Extracted timestamp (YYYY-MM-DD) |
+| `last_modified_raw` | Raw timestamp with method info |
+| `status` | SUCCESS / FAILED / SKIPPED |
+| `method` | Which method succeeded (HTTP_HEADER, WAYBACK, etc.) |
+| `error` | Error message if failed |
 
 ## How It Works
 
 ```
 ┌─────────────────────────────────────────────────────────────┐
-│                     SENTINEL WORKFLOW                        │
+│              PROVENANCE CHECKER WORKFLOW                     │
 └─────────────────────────────────────────────────────────────┘
                             │
                             ▼
 ┌─────────────────────────────────────────────────────────────┐
-│  1. INITIALIZATION                                          │
-│     ├── Load config/sources.yaml (7 data sources)          │
-│     ├── Load config/settings.yaml (timeouts, options)      │
-│     ├── Initialize StateManager (load last_checked.json)   │
-│     └── Initialize GroqVerifier (load GROQ_API_KEY)        │
+│  1. LOAD INPUT                                              │
+│     ├── Read Provenance.csv                                 │
+│     ├── Extract rows with valid provenance_url              │
+│     └── Handle comma-separated URLs (take first)            │
 └─────────────────────────────────────────────────────────────┘
                             │
                             ▼
 ┌─────────────────────────────────────────────────────────────┐
-│  2. FOR EACH DATA SOURCE                                    │
-│     ├── Get source configuration from registry              │
-│     ├── Select handler based on method:                     │
-│     │   ├── http_head  → HTTPHandler                        │
-│     │   ├── api        → APIHandler                         │
-│     │   ├── beautifulsoup → BS4Handler                      │
-│     │   ├── selenium   → SeleniumHandler                    │
-│     │   └── cli        → CLIHandler                         │
-│     ├── Handler fetches current timestamp                   │
-│     ├── Compare with stored timestamp (detect changes)      │
-│     └── Update state file with current timestamp            │
+│  2. FOR EACH URL (parallel with ThreadPoolExecutor)         │
+│     ├── Add random delay (1-2 sec) to avoid rate limits     │
+│     ├── Try each method in order:                           │
+│     │                                                       │
+│     │   TIER 1 - Fast Methods:                              │
+│     │   ├── HTTP_HEADER  → Last-Modified header             │
+│     │   ├── HTML_SCRAPE  → Meta tags, JSON-LD, <time>       │
+│     │   ├── SITEMAP      → sitemap.xml lastmod              │
+│     │   ├── RSS_FEED     → pubDate/updated                  │
+│     │   └── OFFICIAL_API → Known APIs (USGS, etc.)          │
+│     │                                                       │
+│     │   TIER 2 - Archive Methods:                           │
+│     │   ├── WAYBACK      → archive.org                      │
+│     │   ├── URL_VARIATION→ https/http, www/non-www          │
+│     │   ├── MEMENTO      → Time Travel API                  │
+│     │   ├── ARCHIVE_TODAY→ archive.is/archive.ph            │
+│     │   ├── COMMON_CRAWL → commoncrawl.org                  │
+│     │   └── UK_ARCHIVE   → webarchive.org.uk                │
+│     │                                                       │
+│     │   TIER 3 - Fallback:                                  │
+│     │   ├── NEWS_RELEASE → News/blog/release page dates     │
+│     │   ├── DIRECT_HTTP  → Different User-Agents            │
+│     │   └── GROQ_BROWSER → AI browser automation            │
+│     │                                                       │
+│     └── Return first successful result                      │
 └─────────────────────────────────────────────────────────────┘
                             │
                             ▼
 ┌─────────────────────────────────────────────────────────────┐
-│  3. GROQ LLM VERIFICATION (if enabled)                      │
-│     ├── Send extracted timestamp + context to Groq API      │
-│     ├── Model: llama-3.3-70b-versatile                      │
-│     ├── LLM analyzes if timestamp is "last modified" date   │
-│     └── Returns: is_verified, confidence (0-1), reasoning   │
-└─────────────────────────────────────────────────────────────┘
-                            │
-                            ▼
-┌─────────────────────────────────────────────────────────────┐
-│  4. EXPORT RESULTS                                          │
-│     ├── Create CheckResult objects for all sources          │
-│     ├── Export to CSV with all details                      │
-│     ├── Update JSON state file for next comparison          │
-│     └── Display console summary                             │
+│  3. SAVE RESULTS                                            │
+│     ├── Successful URLs → outp.csv                          │
+│     ├── Failed URLs → failed_urls.csv                       │
+│     └── Print summary with success rate                     │
 └─────────────────────────────────────────────────────────────┘
 ```
 
-## Retrieval Methods
+## Retrieval Methods (14 Total)
 
-### 1. HTTP HEAD (`http_head`)
-Sends HTTP HEAD request to get `Last-Modified` header without downloading the file. Falls back to ETag and Date headers if Last-Modified is unavailable. Includes retry logic with configurable timeout.
+### TIER 1: Fast Methods
 
-**Best for:** Direct file URLs (ZIP, CSV, etc.)
+| Method | Description | Best For |
+|--------|-------------|----------|
+| **HTTP_HEADER** | HTTP HEAD request for `Last-Modified` header | Direct file URLs (ZIP, CSV) |
+| **HTML_SCRAPE** | Parse meta tags, JSON-LD, `<time>` elements | Static HTML pages |
+| **SITEMAP** | Parse `sitemap.xml` for `lastmod` dates | Sites with sitemaps |
+| **RSS_FEED** | Check RSS/Atom feeds for `pubDate`/`updated` | Sites with feeds |
+| **OFFICIAL_API** | Query known APIs (e.g., USGS earthquake) | Configured domains |
 
-### 2. API (`api`)
-Fetches JSON/XML from REST API and extracts timestamp fields. Searches recursively for fields like `rowsUpdatedAt`, `lastModified`, `dataUpdatedAt`. Supports Unix timestamps in seconds and milliseconds.
+### TIER 2: Archive Methods
 
-**Best for:** REST API endpoints with structured JSON responses
+| Method | Description | Best For |
+|--------|-------------|----------|
+| **WAYBACK** | Internet Archive Wayback Machine API | Any URL with history |
+| **URL_VARIATION** | Try https/http, www/non-www variations | Broken URLs |
+| **MEMENTO** | Time Travel API (aggregates archives) | Multiple archive sources |
+| **ARCHIVE_TODAY** | archive.is / archive.ph snapshots | Alternative archives |
+| **COMMON_CRAWL** | Common Crawl index search | Large-scale crawl data |
+| **UK_ARCHIVE** | UK Web Archive timemap | UK government sites |
 
-### 3. BeautifulSoup (`beautifulsoup`)
-Parses static HTML pages using CSS selectors. Extracts dates from `<time>` elements (datetime attribute), meta tags, and text patterns using regex. Supports custom selectors.
+### TIER 3: Fallback Methods
 
-**Best for:** Static HTML pages with visible date information
+| Method | Description | Best For |
+|--------|-------------|----------|
+| **NEWS_RELEASE** | Scrape news/blog/release pages for dates | Sites with news sections |
+| **DIRECT_HTTP** | GET with rotating User-Agents (Googlebot, curl) | Bot-blocked sites |
+| **GROQ_BROWSER** | AI-powered browser automation (optional) | JavaScript-heavy sites |
 
-### 4. Selenium (`selenium`)
-Uses headless Chrome browser for JavaScript-rendered pages. Auto-downloads ChromeDriver via webdriver-manager. Supports wait timeouts for dynamic content and CSS selectors.
-
-**Best for:** JavaScript-heavy sites, pages with bot protection
-
-### 5. CLI (`cli`)
-Executes shell commands like `curl -sI` to fetch headers. Parses HTTP headers from command output.
-
-**Best for:** Custom retrieval commands, specific curl configurations
-
-## Output Format
-
-### Console Output
+## Console Output
 
 ```
-Groq LLM verification: ENABLED
+======================================================================
+IMPROVED PROVENANCE CHECKER - ALL METHODS INTEGRATED
+======================================================================
+Methods: HTTP Headers, HTML Scraping, Sitemap, RSS, API,
+         Wayback, URL Variations, Memento, Archive.today,
+         Common Crawl, UK Archive, News/Releases, Direct HTTP, Groq
+======================================================================
 
-Checking all data sources...
---------------------------------------------------
+[1/4] Reading Provenance.csv...
+   Total URLs: 150
 
-Results Summary:
-----------------------------------------------------------------------
-  [NO CHANGE ] BIS Central Bank Policy Rate [VERIFIED 100%]
-  [UPDATED   ] USA Child Birth [VERIFIED 87%]
-  [ERROR     ] FBI Gov Crime [NOT VERIFIED]
+[2/4] Processing (5 workers)...
+   [+] 1/150 CaliforniaSchoolPerformance -> HTTP_HEADER
+   [+] 2/150 crdc_instructional_wifi_devices -> HTTP_HEADER
+   [-] 3/150 USGS_Earthquakes -> HTTP_403:FORBIDDEN | WAYBACK:NO_ARCHIVE
+   [+] 4/150 Mongolia_Demographics -> HTTP_HEADER
+   ...
 
-Results exported to: output.csv
+[3/4] Saving results...
+   SUCCESS: outp.csv (142 URLs)
+   FAILED: failed_urls.csv (8 URLs)
 
-Summary: 1 updated, 1 unchanged, 1 errors
-```
+======================================================================
+                    FINAL SUMMARY
+======================================================================
 
-### CSV Output Columns
+   Total URLs processed:     150
+   URLs FETCHED (Success):   142 (94%)
+   URLs NOT FETCHED (Failed): 8 (6%)
 
-| Column | Description |
-|--------|-------------|
-| `import_name` | Human-readable source name |
-| `dcid` | Data Commons ID |
-| `data_url` | Source data URL |
-| `script_url` | Reference script URL |
-| `method` | Retrieval method used |
-| `last_modified_timestamp` | Current parsed timestamp |
-| `raw_timestamp` | Original timestamp string |
-| `previous_timestamp` | Previously stored timestamp |
-| `changed` | Whether data has changed (True/False) |
-| `check_time` | When the check was performed |
-| `status` | success/error/no_change |
-| `error` | Error message (if any) |
-| `is_verified` | LLM verification result |
-| `verification_confidence` | Confidence percentage (0-100%) |
-| `verification_reasoning` | LLM explanation |
-| `suggested_timestamp` | LLM suggested timestamp (if different) |
+   Methods Used:
+      HTTP_HEADER: 120
+      WAYBACK: 15
+      HTML_SCRAPE: 5
+      MEMENTO: 2
 
-### State File Format (`state/last_checked.json`)
-
-```json
-{
-  "BIS_CentralBankPolicyRate": {
-    "timestamp": "2026-02-11T09:22:49+00:00",
-    "last_check": "2026-02-16T13:17:28.483087",
-    "raw_value": "Wed, 11 Feb 2026 09:22:49 GMT"
-  },
-  "usa_child_birth": {
-    "timestamp": "2026-01-15T00:00:00+00:00",
-    "last_check": "2026-02-16T13:17:30.123456",
-    "raw_value": "January 15, 2026"
-  }
-}
+======================================================================
+OUTPUT FILES:
+   Successful URLs saved to: outp.csv
+   Failed URLs saved to:     failed_urls.csv
+======================================================================
 ```
 
 ## Configuration
 
-### Adding a New Source
+### Main Script Configuration
 
-Edit `config/sources.yaml`:
+Edit the `CONFIG` dict in `check_provenance_improved.py`:
+
+```python
+CONFIG = {
+    "input_file": "Provenance.csv",    # Input file with provenance URLs
+    "output_file": "outp.csv",         # Output for successful URLs
+    "failed_file": "failed_urls.csv",  # Output for failed URLs
+    "max_workers": 5,                  # Number of concurrent threads
+    "timeout": 30,                     # HTTP request timeout (seconds)
+    "delay_min": 1,                    # Minimum delay between requests
+    "delay_max": 2,                    # Maximum delay between requests
+    "use_groq_fallback": False,        # Enable Groq browser automation
+}
+```
+
+### Adding Known APIs
+
+Add domain-specific APIs in `KNOWN_APIS` dict:
+
+```python
+KNOWN_APIS = {
+    "earthquake.usgs.gov": {
+        "api_url": "https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&limit=1",
+        "timestamp_path": ["metadata", "generated"],
+        "format": "unix_ms"
+    },
+    "your.domain.com": {
+        "api_url": "https://your.domain.com/api/status",
+        "timestamp_path": ["data", "lastUpdated"],
+        "format": "iso"  # or "unix_ms"
+    },
+}
+```
+
+### Alternative: YAML Configuration (Modular Approach)
+
+For the modular `core/sentinel.py` approach, edit `config/sources.yaml`:
 
 ```yaml
 my_new_source:
@@ -353,103 +411,82 @@ my_new_source:
   dcid: "my_new_source"
   method: api                      # http_head, api, beautifulsoup, selenium, cli
   data_url: "https://api.example.com/data.json"
-  script_url: "https://github.com/..."
-  timestamp_field: "lastModified"  # Primary field to look for
-  fallback_fields:                 # Alternative fields if primary not found
-    - "updated_at"
-    - "modified"
-    - "dataUpdatedAt"
-```
-
-### Selenium Source Example
-
-```yaml
-my_js_source:
-  import_name: "JavaScript Heavy Site"
-  dcid: "my_js_source"
-  method: selenium
-  data_url: "https://example.com/dynamic-page"
-  wait_timeout: 45                 # Seconds to wait for page load
-  selectors:                       # CSS selectors to try
-    - "time.last-updated"
-    - "span.date-modified"
-    - ".update-info"
-```
-
-### BeautifulSoup Source Example
-
-```yaml
-my_static_source:
-  import_name: "Static HTML Page"
-  dcid: "my_static_source"
-  method: beautifulsoup
-  data_url: "https://example.com/data-page"
-  selectors:
-    - "time[datetime]"
-    - "meta[name='last-modified']"
-  pattern: "Last updated: (\\d{4}-\\d{2}-\\d{2})"  # Regex pattern
-```
-
-### Application Settings (`config/settings.yaml`)
-
-```yaml
-http:
-  timeout: 30                      # Request timeout in seconds
-  max_retries: 3                   # Number of retry attempts
-  user_agent: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"
-
-selenium:
-  headless: true                   # Run Chrome in headless mode
-  wait_timeout: 45                 # Default wait timeout
-  page_load_timeout: 60            # Page load timeout
-
-logging:
-  level: INFO                      # DEBUG, INFO, WARNING, ERROR
-  format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
-  file: "sentinel.log"             # Log file path
+  timestamp_field: "lastModified"
 ```
 
 ## Dependencies
 
-### Core Dependencies
-- `requests >= 2.28.0` - HTTP client for API calls
-- `PyYAML >= 6.0` - YAML configuration parsing
-- `python-dateutil >= 2.8.0` - Flexible date parsing
+### Required (for check_provenance_improved.py)
 
-### Web Scraping
-- `beautifulsoup4 >= 4.11.0` - HTML/XML parsing
-- `lxml >= 4.9.0` - Fast XML/HTML parser backend
+```bash
+pip install requests pandas python-dotenv beautifulsoup4 urllib3
+```
 
-### Browser Automation
-- `selenium >= 4.8.0` - Browser automation framework
-- `webdriver-manager >= 4.0.0` - Automatic ChromeDriver management
+| Package | Version | Purpose |
+|---------|---------|---------|
+| `requests` | >= 2.28.0 | HTTP requests with retry logic |
+| `pandas` | >= 2.0.0 | CSV read/write |
+| `python-dotenv` | >= 1.0.0 | Load .env file |
+| `beautifulsoup4` | >= 4.11.0 | HTML parsing (TIER 1) |
+| `urllib3` | >= 2.0.0 | SSL/connection handling |
 
-### LLM Verification
-- `groq >= 0.4.0` - Groq API client
-- `python-dotenv >= 1.0.0` - Environment variable management
+### Optional (for Groq fallback)
 
-### Data Processing
-- `pandas >= 2.0.0` - CSV processing and data manipulation
+```bash
+pip install groq
+```
+
+| Package | Version | Purpose |
+|---------|---------|---------|
+| `groq` | >= 0.4.0 | AI browser automation (TIER 3) |
+
+### Optional (for modular sentinel)
+
+```bash
+pip install PyYAML selenium webdriver-manager lxml
+```
+
+| Package | Purpose |
+|---------|---------|
+| `PyYAML` | YAML config parsing |
+| `selenium` | Browser automation |
+| `webdriver-manager` | Auto ChromeDriver |
+| `lxml` | Fast XML parser |
 
 ### Testing
-- `pytest >= 7.0.0` - Test framework
-- `pytest-cov >= 4.0.0` - Coverage reporting
-- `responses >= 0.22.0` - HTTP mocking
-- `requests-mock >= 1.10.0` - Request mocking
 
-### Optional
-- `colorama >= 0.4.6` - Colored console output
-- `tqdm >= 4.65.0` - Progress bars
+```bash
+pip install pytest pytest-cov responses requests-mock
+```
 
 ## Environment Variables
 
 | Variable | Description | Required |
 |----------|-------------|----------|
-| `GROQ_API_KEY` | Groq API key for LLM verification | Yes (for verification) |
+| `GROQ_API_KEY` | Groq API key for browser fallback (TIER 3) | Optional |
 
 Get your Groq API key from: https://console.groq.com/keys
 
+**Note**: The main script works without Groq API key. It's only needed if you enable `use_groq_fallback: True` for JavaScript-heavy sites.
+
 ## Testing
+
+### Run Main Script
+
+```bash
+# Process all URLs from Provenance.csv
+python check_provenance_improved.py
+```
+
+### Test with Sample Data
+
+The script uses `Provenance.csv` as input. Sample rows include:
+- `CaliforniaSchoolPerformance` - caaspp-elpac.ets.org
+- `Mongolia_Demographics` - 1212.mn
+- `EurostatData_GDP` - ec.europa.eu
+- `USFEMA_NationalRiskIndex` - hazards.fema.gov
+
+### Unit Tests
 
 ```bash
 # Run all tests
@@ -479,33 +516,54 @@ The date parser supports 18+ formats including:
 
 ## Troubleshooting
 
-### Selenium Issues
+### Common Issues
+
+**SSL Errors**
+```
+SSL certificate verify failed
+```
+The script automatically disables SSL warnings. If issues persist, check your network/proxy settings.
+
+**Rate Limiting**
+```
+HTTP_429 or CONNECTION_ERROR
+```
+Increase `delay_min`/`delay_max` in CONFIG, or reduce `max_workers`.
+
+**No Timestamps Found**
+If a URL fails with all methods:
+1. Check if the URL is accessible in browser
+2. Look at `failed_urls.csv` for error details
+3. The URL may require JavaScript (enable `use_groq_fallback`)
+
+### Groq API Setup (Optional)
 
 ```bash
-# If ChromeDriver fails to download automatically:
-pip install --upgrade webdriver-manager
+# Set API key for Groq browser fallback
+# Windows
+set GROQ_API_KEY=your_key_here
 
-# For Chrome version mismatch:
-# The webdriver-manager will auto-detect and download the correct version
+# Linux/Mac
+export GROQ_API_KEY=your_key_here
+
+# Or add to .env file
+echo "GROQ_API_KEY=your_key_here" > .env
 ```
 
-### Groq API Errors
-
-```bash
-# Verify API key is set
-echo $GROQ_API_KEY  # Linux/Mac
-echo %GROQ_API_KEY% # Windows
-
-# Run without verification to test other components
-python scripts/run_check.py --no-verify
+Then enable in CONFIG:
+```python
+CONFIG = {
+    ...
+    "use_groq_fallback": True,
+}
 ```
 
 ### Date Parsing Issues
 
-If a date isn't being parsed correctly, check:
-1. The `timestamp_field` or `selectors` in sources.yaml
-2. Add a custom `pattern` regex for non-standard formats
-3. Check logs for the raw extracted value
+If dates aren't parsed correctly:
+1. Check `last_modified_raw` column for the raw value
+2. Add new format to `normalize_date()` function
+3. Add regex pattern to `extract_date_from_text()`
 
 ## Contributing
 
@@ -535,7 +593,11 @@ This project is open source and available under the [MIT License](LICENSE).
 
 ## Acknowledgments
 
-- [Groq](https://groq.com/) for LLM API (llama-3.3-70b-versatile model)
-- [Data Commons](https://datacommons.org/) for data source references
-- [Selenium](https://www.selenium.dev/) for browser automation
+- [Internet Archive Wayback Machine](https://archive.org/web/) for historical snapshots
+- [Memento Time Travel](http://timetravel.mementoweb.org/) for aggregating web archives
+- [Common Crawl](https://commoncrawl.org/) for web crawl data
+- [Archive.today](https://archive.today/) for page archiving
+- [UK Web Archive](https://www.webarchive.org.uk/) for UK site archives
+- [Groq](https://groq.com/) for AI browser automation (optional)
 - [Beautiful Soup](https://www.crummy.com/software/BeautifulSoup/) for HTML parsing
+- [Data Commons](https://datacommons.org/) for provenance data references

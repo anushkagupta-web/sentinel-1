@@ -76,3 +76,14 @@ Thumbs.db
 # But ignore any sensitive data files
 *.credentials
 *.secret
+
+# =============================================================================
+# Documentation/Notes (not for push)
+# =============================================================================
+fetch_remaining.md
+fetch_timestamps_best.md
+errorurl.md
+notfetched.md
+output1_explain.md
+
+
