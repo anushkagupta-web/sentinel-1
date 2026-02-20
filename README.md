@@ -330,37 +330,36 @@ Methods: HTTP Headers, HTML Scraping, Sitemap, RSS, Official API,
 ======================================================================
 
 [1/4] Reading Provenance.csv...
-   Total URLs: 150
+   Total URLs: 686
 
 [2/4] Processing (5 workers)...
-   [+] 1/150 CaliforniaSchoolPerformance -> HTTP_HEADER
-   [+] 2/150 crdc_instructional_wifi_devices -> HTTP_HEADER
-   [+] 3/150 USGS_Earthquakes -> WAYBACK
-   [+] 4/150 Mongolia_Demographics -> HTTP_HEADER
-   [+] 5/150 EurostatData_GDP -> HTML_SCRAPE
-   [+] 6/150 ClimateTrace_Emissions -> OFFICIAL_API
-   [+] 7/150 USFEMA_NationalRiskIndex -> MEMENTO
+   [+] 1/686 CaliforniaSchoolPerformance -> HTTP_HEADER
+   [+] 2/686 crdc_instructional_wifi_devices -> HTTP_HEADER
+   [+] 3/686 USGS_Earthquakes -> WAYBACK
+   [+] 4/686 Mongolia_Demographics -> HTTP_HEADER
+   [+] 5/686 EurostatData_GDP -> HTML_SCRAPE
+   [+] 6/686 ClimateTrace_Emissions -> OFFICIAL_API
+   [+] 7/686 USFEMA_NationalRiskIndex -> URL_VARIATION
    ...
 
 [3/4] Saving results...
-   SUCCESS: outp.csv (150 URLs)
+   SUCCESS: outp.csv (686 URLs)
 
 ======================================================================
                     FINAL SUMMARY
 ======================================================================
 
-   Total URLs processed:     150
-   URLs FETCHED (Success):   150 (100%)
+   Total URLs processed:     686
+   URLs FETCHED (Success):   686 (100%)
    URLs NOT FETCHED (Failed): 0 (0%)
 
    Methods Used:
-      HTTP_HEADER: 95
-      WAYBACK: 25
-      HTML_SCRAPE: 12
-      MEMENTO: 8
-      OFFICIAL_API: 5
-      COMMON_CRAWL: 3
-      NEWS_RELEASE: 2
+      HTTP_HEADER: 593
+      WAYBACK: 68
+      URL_VARIATION: 15
+      HTML_SCRAPE: 6
+      SITEMAP: 2
+      OFFICIAL_API: 2
 
 ======================================================================
 OUTPUT FILES:
