@@ -323,9 +323,10 @@ sentinel.export_to_csv(results, "output.csv")
 ======================================================================
 IMPROVED PROVENANCE CHECKER - ALL METHODS INTEGRATED
 ======================================================================
-Methods: HTTP Headers, HTML Scraping, Sitemap, RSS, API,
+Methods: HTTP Headers, HTML Scraping, Sitemap, RSS, Official API,
          Wayback, URL Variations, Memento, Archive.today,
-         Common Crawl, UK Archive, News/Releases, Direct HTTP, Groq
+         Common Crawl, UK Archive, News/Press Releases,
+         Direct HTTP, Groq Browser
 ======================================================================
 
 [1/4] Reading Provenance.csv...
@@ -334,32 +335,36 @@ Methods: HTTP Headers, HTML Scraping, Sitemap, RSS, API,
 [2/4] Processing (5 workers)...
    [+] 1/150 CaliforniaSchoolPerformance -> HTTP_HEADER
    [+] 2/150 crdc_instructional_wifi_devices -> HTTP_HEADER
-   [-] 3/150 USGS_Earthquakes -> HTTP_403:FORBIDDEN | WAYBACK:NO_ARCHIVE
+   [+] 3/150 USGS_Earthquakes -> WAYBACK
    [+] 4/150 Mongolia_Demographics -> HTTP_HEADER
+   [+] 5/150 EurostatData_GDP -> HTML_SCRAPE
+   [+] 6/150 ClimateTrace_Emissions -> OFFICIAL_API
+   [+] 7/150 USFEMA_NationalRiskIndex -> MEMENTO
    ...
 
 [3/4] Saving results...
-   SUCCESS: outp.csv (142 URLs)
-   FAILED: failed_urls.csv (8 URLs)
+   SUCCESS: outp.csv (150 URLs)
 
 ======================================================================
                     FINAL SUMMARY
 ======================================================================
 
    Total URLs processed:     150
-   URLs FETCHED (Success):   142 (94%)
-   URLs NOT FETCHED (Failed): 8 (6%)
+   URLs FETCHED (Success):   150 (100%)
+   URLs NOT FETCHED (Failed): 0 (0%)
 
    Methods Used:
-      HTTP_HEADER: 120
-      WAYBACK: 15
-      HTML_SCRAPE: 5
-      MEMENTO: 2
+      HTTP_HEADER: 95
+      WAYBACK: 25
+      HTML_SCRAPE: 12
+      MEMENTO: 8
+      OFFICIAL_API: 5
+      COMMON_CRAWL: 3
+      NEWS_RELEASE: 2
 
 ======================================================================
 OUTPUT FILES:
    Successful URLs saved to: outp.csv
-   Failed URLs saved to:     failed_urls.csv
 ======================================================================
 ```
 
