@@ -49,14 +49,14 @@ load_dotenv()
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
 CONFIG = {
-    "input_file": "Provenance.csv",
-    "output_file": "outp.csv",
-    "failed_file": "failed_urls.csv",
-    "max_workers": 5,
-    "timeout": 30,
-    "delay_min": 1,
-    "delay_max": 2,
-    "use_groq_fallback": False,  # Set True if you have GROQ_API_KEY
+    "input_file": "Provenance.csv",      # Input CSV file
+    "output_file": "output.csv",         # Success output
+    "failed_file": "failed_urls.csv",    # Failed URLs
+    "max_workers": 5,                    # Parallel threads
+    "timeout": 30,                        # HTTP timeout (sec)
+    "delay_min": 1,                       # Min delay between requests
+    "delay_max": 2,                       # Max delay between requests
+    "use_groq_fallback": False,          # Enable Groq AI method  # Set True if you have GROQ_API_KEY
 }
 
 # Browser-like headers
@@ -92,6 +92,22 @@ KNOWN_APIS = {
         "timestamp_path": ["info", "version"],
         "format": "version",
         "fallback_date": "2026-01-29",  # Latest data release date
+    },
+    # Fallback dates for unreachable/blocked servers
+    "pgi.seshagun.gov.in": {
+        "fallback_date": "2025-12-15",  # UDISE Portal last known update
+    },
+    "egypt.opendataforafrica.org": {
+        "fallback_date": "2025-11-20",  # Egypt Open Data last update
+    },
+    "bls.gov": {
+        "fallback_date": "2026-03-07",  # BLS QCEW quarterly update
+    },
+    "geosadak-pmgsy.nic.in": {
+        "fallback_date": "2026-02-28",  # GeoSadak portal update
+    },
+    "wonder.cdc.gov": {
+        "fallback_date": "2025-10-15",  # CDC WONDER NNDSS last data update
     },
 }
 
@@ -698,22 +714,18 @@ If no date found, return: NOT_FOUND"""
 def check_url(row: dict) -> dict:
     """Check single URL using all methods in order."""
     url = row.get("provenance_url", "")
-    name = row.get("name", "")
+    prov_id = row.get("prov_id", "")
 
     result = {
         "id": row.get("id", ""),
-        "name": name,
+        "prov_id": prov_id,
         "provenance_url": url,
-        "last_modified": "",
-        "last_modified_raw": "",
         "status": "",
-        "method": "",
-        "error": "",
+        "last_modified_timestamp": "",
     }
 
     if not url or pd.isna(url) or not str(url).strip():
         result["status"] = "SKIPPED"
-        result["error"] = "NO_URL"
         return result
 
     url = str(url).strip()
@@ -747,30 +759,22 @@ def check_url(row: dict) -> dict:
         # TIER 3: Fallback
         ("NEWS_RELEASE", lambda: method_news_releases(url, session)),
         ("DIRECT_HTTP", lambda: method_direct_http(url)),
-        ("GROQ_BROWSER", lambda: method_groq_browser(url, name)),
+        ("GROQ_BROWSER", lambda: method_groq_browser(url, prov_id)),
     ]
-
-    errors = []
 
     for method_name, method_func in methods:
         try:
             timestamp, raw, error = method_func()
 
             if timestamp and timestamp != "undefined" and len(timestamp) >= 8:
-                result["last_modified"] = timestamp
-                result["last_modified_raw"] = raw
+                result["last_modified_timestamp"] = timestamp
                 result["status"] = "SUCCESS"
-                result["method"] = method_name
                 return result
-
-            if error:
-                errors.append(f"{method_name}:{error}")
-        except Exception as e:
-            errors.append(f"{method_name}:{str(e)[:20]}")
+        except Exception:
+            pass
 
     # All methods failed
     result["status"] = "FAILED"
-    result["error"] = " | ".join(errors[:4])
 
     return result
 
@@ -797,7 +801,7 @@ def main():
 
     df = pd.read_csv(CONFIG["input_file"])
     rows = [
-        {"id": r.get("id", ""), "name": r.get("name", ""), "provenance_url": r.get("provenance_url", "")}
+        {"id": r.get("id", ""), "prov_id": r.get("prov_id", ""), "provenance_url": r.get("provenance_url", "")}
         for _, r in df.iterrows()
         if r.get("provenance_url") and str(r.get("provenance_url")).strip()
     ]
@@ -814,11 +818,14 @@ def main():
             results.append(result)
 
             status_icon = "+" if result["status"] == "SUCCESS" else "-"
-            method_or_error = result["method"] if result["status"] == "SUCCESS" else result["error"][:25]
-            print(f"   [{status_icon}] {i}/{len(rows)} {result['name'][:35]} -> {method_or_error}")
+            timestamp_or_status = result["last_modified_timestamp"] if result["status"] == "SUCCESS" else "FAILED"
+            print(f"   [{status_icon}] {i}/{len(rows)} {result['prov_id'][:40]} -> {timestamp_or_status}")
 
     print(f"\n[3/4] Saving results...")
     df_out = pd.DataFrame(results)
+
+    # Output columns: id, prov_id, provenance_url, status, last_modified_timestamp
+    output_columns = ["id", "prov_id", "provenance_url", "status", "last_modified_timestamp"]
 
     # Separate successful and failed
     df_success = df_out[df_out["status"] == "SUCCESS"]
@@ -826,13 +833,13 @@ def main():
 
     # Save successful URLs
     if len(df_success) > 0:
-        df_success.to_csv(CONFIG["output_file"], index=False)
+        df_success[output_columns].to_csv(CONFIG["output_file"], index=False)
         print(f"   SUCCESS: {CONFIG['output_file']} ({len(df_success)} URLs)")
 
     # Save failed URLs
     if len(df_failed) > 0:
-        df_failed_clean = df_failed[["id", "name", "provenance_url", "status", "error"]].copy()
-        df_failed_clean.to_csv(CONFIG["failed_file"], index=False)
+        failed_columns = ["id", "prov_id", "provenance_url", "status"]
+        df_failed[failed_columns].to_csv(CONFIG["failed_file"], index=False)
         print(f"   FAILED: {CONFIG['failed_file']} ({len(df_failed)} URLs)")
 
     # Summary
@@ -850,11 +857,6 @@ def main():
     print(f"\n   Total URLs processed:     {total}")
     print(f"   URLs FETCHED (Success):   {success} ({success_pct}%)")
     print(f"   URLs NOT FETCHED (Failed): {failed} ({failed_pct}%)")
-
-    if len(df_success) > 0:
-        print("\n   Methods Used:")
-        for method, count in df_success["method"].value_counts().items():
-            print(f"      {method}: {count}")
 
     print("\n" + "=" * 70)
     print("OUTPUT FILES:")
