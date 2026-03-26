@@ -1,0 +1,130 @@
+prov_id,import_name,url,output,manual,match_type
+dc/base/Google_COVID19Mobility,Google_COVID19Mobility,https://www.google.com/covid19/mobility/,2024-09-17,2026-01-10,Mismatch
+dc/base/Mongolia_Health,Mongolia_Health,https://www.1212.mn/en/statcate,2026-03-18,2025-11-08,Mismatch
+dc/base/Mongolia_Demographics,Mongolia_Health,https://www.1212.mn/en/statcate,2026-03-18,2025-11-08,Mismatch
+dc/base/Mongolia_Employment,Mongolia_Health,https://www.1212.mn/en/statcate,2026-03-18,2025-11-08,Mismatch
+dc/base/Mongolia_Education,Mongolia_Health,https://www.1212.mn/en/statcate,2026-03-18,2025-11-08,Mismatch
+dc/base/OECDRegionalDemography_LifeExpectancy,OECDRegionalDemography_LifeExpectancy,https://data-explorer.oecd.org/vis?df[ds]=DisseminateFinalDM...,2026-03-18,2026-01-15,Year Match Only
+dc/base/OECDRegionalDemography_Population,OECDRegionalDemography_Population,https://data-explorer.oecd.org/vis?fs[0]=Topic%2C0%7CRegiona...,2026-03-18,2026-02-01,Year Match Only
+dc/base/OECDRegionalDemography_PopulationDensity,OECDRegionalDemography_PopulationDensity,https://data-explorer.oecd.org/vis?pg=0&snb=1&tm=pop%20densi...,2026-03-18,2026-02-01,Year Match Only
+dc/base/Zurich_Population_By_Origin,Zurich_Population_By_Origin,https://www.stadt-zuerich.ch/content/dam/web/de/politik-verw...,2024-11-25,2026-01-29,Mismatch
+dc/base/USFEMA_FloodInsuranceClaims,USFEMA_FloodInsuranceClaims,https://www.fema.gov/openfema-data-page/fima-nfip-redacted-c...,2026-02-12,2025-12-31,Mismatch
+dc/base/Zurich_Population,Zurich_Population,https://www.stadt-zuerich.ch/content/dam/web/de/politik-verw...,2024-11-08,2026-01-29,Mismatch
+dc/base/Zurich_Population_Number_Of_Company_Workplace_Employees,Zurich_Population_Number_Of_Company_Workplace_Employees,https://www.stadt-zuerich.ch/content/dam/web/de/politik-verw...,2024-11-25,2026-01-29,Mismatch
+dc/base/Zurich_Population_By_Sex,Zurich_Population_By_Sex,https://www.stadt-zuerich.ch/content/dam/web/de/politik-verw...,2024-11-25,2026-01-29,Mismatch
+dc/base/Zurich_Population_Number_Of_Birth_By_Origin,Zurich_Population_Number_Of_Birth_By_Origin,https://www.stadt-zuerich.ch/content/dam/web/de/politik-verw...,2025-01-09,2026-01-29,Mismatch
+dc/base/Zurich_Population_Number_Of_Birth,Zurich_Population_Number_Of_Birth,https://www.stadt-zuerich.ch/content/dam/web/de/politik-verw...,2025-01-09,2026-01-29,Mismatch
+dc/base/Zurich_Population_Number_Of_Birth_By_Sex,Zurich_Population_Number_Of_Birth_By_Sex,https://www.stadt-zuerich.ch/content/dam/web/de/politik-verw...,2025-01-09,2026-01-29,Mismatch
+dc/base/Zurich_Population_By_Age,Zurich_Population_By_Age,https://www.stadt-zuerich.ch/content/dam/web/de/politik-verw...,2024-11-25,2026-01-29,Mismatch
+dc/base/BEA_USStatesQuarterlyGDP,BEA_USStatesQuarterlyGDP,https://www.bea.gov/data/gdp/gdp-state,2026-03-11,2026-01-30,Year Match Only
+dc/base/BLS_CES_State,BLS_CES_State,https://www.bls.gov/sae/overview.htm,2025-03-17,2026-01-28,Mismatch
+dc/base/USGSWaterUse,USGSWaterUse,https://waterdata.usgs.gov/nwis/wu,2026-03-23,2022-06-02,Mismatch
+dc/base/BLS_CES,BLS_CES,https://www.bls.gov/ces/,2026-03-06,2026-02-02,Year Match Only
+dc/base/USNationalPrisonerStatistics,USNationalPrisonerStatistics,https://www.bjs.gov/index.cfm?ty=dcdetail&iid=269,2026-03-24,2026-02-05,Year Match Only
+dc/base/BLS_JOLTS,BLS_JOLTS,https://www.bls.gov/jlt/,2026-03-13,2026-01-30,Year Match Only
+dc/base/USCensusPEP_By_SexRaceHispanicOrigin,USCensusPEP_Annual_Population,https://www.census.gov/programs-surveys/popest.html,2025-09-25,2026-02-03,Mismatch
+dc/base/CensusPEP,USCensusPEP_Annual_Population,https://www.census.gov/programs-surveys/popest.html,2025-09-25,2026-02-03,Mismatch
+dc/base/USCensusPEP_Sex,USCensusPEP_Annual_Population,https://www.census.gov/programs-surveys/popest.html,2025-09-25,2026-02-03,Mismatch
+dc/base/USCensusPEP_Annual_Population,USCensusPEP_Annual_Population,https://www.census.gov/programs-surveys/popest.html,2025-09-25,2026-02-03,Mismatch
+dc/base/USCensusPEP_AgeSexRaceHispanicOrigin,USCensusPEP_AgeSexRace,https://www2.census.gov/programs-surveys/popest/tables,2026-03-24,2026-02-02,Year Match Only
+dc/base/USCensusPEP_PopulationEstimatebyRace,USCensusPEP_Annual_Population,https://www.census.gov/programs-surveys/popest.html,2025-09-25,2026-02-03,Mismatch
+dc/base/USCensusPEP_AgeSexRace,USCensusPEP_AgeSexRace,https://www2.census.gov/programs-surveys/popest/tables,2026-03-24,2026-02-02,Year Match Only
+dc/base/EPAAirQualityIndex,EPAAirQualityIndex,https://aqs.epa.gov/aqsweb/airdata/download_files.html,2025-12-04,2025-02-05,Year Match Only
+dc/base/USCensusPEP_By_Sex_Race,USCensusPEP_Annual_Population,https://www.census.gov/programs-surveys/popest.html,2025-09-25,2026-02-03,Mismatch
+dc/base/CDC_Social_Vulnerability_Index,CDC_Social_Vulnerability_Index,https://www.atsdr.cdc.gov/place-health/php/svi/svi-data-docu...,2026-01-15,2026-02-09,Year Match Only
+dc/base/NCHS_BRFSS_Asthma,NCHS_BRFSS_Asthma,https://www.cdc.gov/asthma/brfss/default.htm,2023-03-23,2026-02-03,Mismatch
+dc/base/USCensusPEP_MonthlyPopulation,USCensusPEP_Annual_Population,https://www.census.gov/programs-surveys/popest.html,2025-09-25,2026-02-03,Mismatch
+dc/base/CensusSAHIE,CensusSAHIE,https://www.census.gov/programs-surveys/sahie.html,2026-03-24,2025-12-15,Mismatch
+dc/base/CDC_PalmerDroughtSeverityIndex,CDC_PalmerDroughtSeverityIndex,https://data.cdc.gov/Environmental-Health-Toxicology/Palmer-...,2018-07-26,2026-02-01,Mismatch
+dc/base/CDC_StandardizedPrecipitationIndex,CDC_StandardizedPrecipitationIndex,https://data.cdc.gov/Environmental-Health-Toxicology/Standar...,2018-07-26,2026-01-15,Mismatch
+dc/base/CDC_PM25County,CDC_PM25County,https://data.cdc.gov/Environmental-Health-Toxicology/Daily-C...,2023-09-19,2026-01-04,Mismatch
+dc/base/CDC_StandardizedPrecipitationEvapotranspirationIndex,CDC_StandardizedPrecipitationEvapotranspirationIndex,https://data.cdc.gov/Environmental-Health-Toxicology/Standar...,2018-06-20,2026-02-01,Mismatch
+dc/base/CDC_NORS_NonInfectious,CDC_NORS_NonInfectious,https://wwwn.cdc.gov/norsdashboard/,2026-03-02,2026-01-15,Year Match Only
+dc/base/CDC500_States,CDC500_States,https://www.cdc.gov/places/index.html,2025-02-03,2026-02-02,Mismatch
+dc/base/Commerce_NTIA,Commerce_NTIA,https://www.ntia.gov/other-publication/2022/digital-nation-d...,2024-06-06,2026-02-06,Mismatch
+dc/base/USDA_AgricultureCensus,USDA_AgricultureSurvey,https://www.nass.usda.gov/AgCensus/,2026-02-03,2025-11-21,Mismatch
+dc/base/HUD_IncomeLimits,HUD_IncomeLimits,https://www.huduser.gov/portal/datasets/il.html,2026-03-24,2026-02-01,Year Match Only
+dc/base/USFed_ConstantMaturityRates,USFed_ConstantMaturityRates,https://www.federalreserve.gov/releases/h15/,2026-03-24,2026-02-10,Year Match Only
+dc/base/NOAA_GPCC_StandardardizedPrecipitationIndex_Event,NOAA_GPCC_StandardardizedPrecipitationIndex,https://www.drought.gov/data-maps-tools/global-precipitation...,2026-03-10,2025-07-24,Mismatch
+dc/base/NOAA_GPCC_StandardardizedPrecipitationIndex_Event_Observations,NOAA_GPCC_StandardardizedPrecipitationIndex,https://www.drought.gov/data-maps-tools/global-precipitation...,2026-03-10,2025-07-24,Mismatch
+dc/base/NOAA_GPCC_StandardardizedPrecipitationIndex_Event_Places,NOAA_GPCC_StandardardizedPrecipitationIndex,https://www.drought.gov/data-maps-tools/global-precipitation...,2026-03-10,2025-07-24,Mismatch
+dc/base/NCSES_Research_Doctorate_Recipients_Import,NCSES_Research_Doctorate_Recipients_Import,https://ncses.nsf.gov/pubs/nsf23300/data-tables,2026-03-17,2026-01-26,Year Match Only
+dc/base/NCSES_DoctorateDegreeEmployment,NCSES_DoctorateDegreeEmployment,https://ncses.nsf.gov/pubs/nsf19304/data,2026-03-17,2026-02-09,Year Match Only
+dc/base/WorldDevelopmentIndicators,WorldDevelopmentIndicators,https://datatopics.worldbank.org/world-development-indicator...,2025-08-28,2026-01-27,Mismatch
+dc/base/NCSES_Median_Annual_Salary_Import,NCSES_Median_Annual_Salary_Import,https://ncses.nsf.gov/pubs/nsf23306#section13069,2023-01-27,2026-01-27,Mismatch
+dc/base/NCSES_Demographics_SEH_Import,NCSES_Demographics_SEH_Import,https://ncses.nsf.gov/pubs/nsf25316,2026-03-17,2026-01-28,Year Match Only
+dc/base/IPCCPlaces_GeoCoordinates,NASA_NEXGDDP_IpccPlaces50,https://www.nccs.nasa.gov/services/data-collections/land-bas...,2026-03-19,2022-08-07,Mismatch
+dc/base/IPCCPlaces,NASA_NEXGDDP_IpccPlaces50,https://www.nccs.nasa.gov/services/data-collections/land-bas...,2026-03-19,2022-08-07,Mismatch
+dc/base/DEA_ARCOS_AggState_AggCountry,DEA_ARCOS,https://www.deadiversion.usdoj.gov/arcos/retail_drug_summary...,2025-11-12,2022-06-02,Mismatch
+dc/base/DEA_ARCOS_AggState,DEA_ARCOS,https://www.deadiversion.usdoj.gov/arcos/retail_drug_summary...,2025-11-12,2022-06-02,Mismatch
+dc/base/EPA_GHGRP_AggCounty_AggState,EPA_GHGRP_ParentCompanies,https://www.epa.gov/ghgreporting,2026-03-24,2022-06-02,Mismatch
+dc/base/EPA_GHGRP_AggCounty,EPA_GHGRP_ParentCompanies,https://www.epa.gov/ghgreporting,2026-03-24,2022-06-02,Mismatch
+dc/base/EPA_GHGRP_AggCensusZipCodeTabulationArea,EPA_GHGRP_ParentCompanies,https://www.epa.gov/ghgreporting,2026-03-24,2022-06-02,Mismatch
+dc/base/CensusSAHIE_AggCountry,CensusSAHIE,https://www.census.gov/programs-surveys/sahie.html,2026-03-24,2025-12-15,Mismatch
+dc/base/NOAA_GPCC_StandardardizedPrecipitationIndex_AggPlace,NOAA_GPCC_StandardardizedPrecipitationIndex,https://www.drought.gov/data-maps-tools/global-precipitation...,2026-03-10,2025-07-24,Mismatch
+dc/base/Covid19IndiaData,Covid19IndiaData,http://projects.datameet.org/covid19/,2022-10-21,2023-04-12,Mismatch
+dc/base/USNationalPrisonerStatistics_Crime_StatVarAgg,USNationalPrisonerStatistics,https://www.bjs.gov/index.cfm?ty=dcdetail&iid=269,2026-03-24,2026-02-05,Year Match Only
+dc/base/USDA_AgricultureCensus_Agriculture_StatVarAgg,USDA_AgricultureSurvey,https://www.nass.usda.gov/AgCensus/,2026-02-03,2025-11-21,Mismatch
+dc/base/StormNOAA_Agg,StormNOAA,https://www.ncdc.noaa.gov/,2026-01-30,2025-10-25,Mismatch
+dc/base/Argentina_Census,Argentina_Census,https://www.indec.gob.ar,2019-09-11,2023-05-11,Mismatch
+dc/base/FAO_Currency,FAO_Currency_statvar,https://www.fao.org/faostat/en/#data/PE/metadata,2026-03-24,2026-02-05,Year Match Only
+dc/base/FAO_Currency_statvar,FAO_Currency_statvar,https://www.fao.org/faostat/en/#data/PE/metadata,2026-03-24,2026-02-05,Year Match Only
+dc/base/Ireland_Census,Ireland_Census,https://www.cso.ie/en/index.html,2026-03-24,2026-02-06,Year Match Only
+dc/base/Japan_Census,Japan_Census,https://www.e-stat.go.jp/,2023-01-31,2023-06-21,Year Match Only
+dc/base/NOAA_GPCC_StandardardizedPrecipitationIndex,NOAA_GPCC_StandardardizedPrecipitationIndex,https://www.drought.gov/data-maps-tools/global-precipitation...,2026-03-10,2025-07-24,Mismatch
+dc/base/OECDRegionalDemography_Deaths,OECDRegionalDemography_Deaths,https://data-explorer.oecd.org/vis?df[ds]=DisseminateFinalDM...,2026-03-18,2026-02-01,Year Match Only
+dc/base/UN_SDG,UN_SDG,https://unstats.un.org/sdgs/dataportal,2025-12-17,2024-05-08,Mismatch
+dc/base/USMonthlyRetailSales,USMonthlyRetailSales,https://www.census.gov/retail/index.html,2026-03-19,2026-02-02,Year Match Only
+dc/base/WHO_COVID19,WHO_COVID19,https://data.who.int/dashboards/covid19/data?n=c,2026-03-23,2026-01-01,Year Match Only
+dc/base/WikipediaStatsData,WikipediaStatsData,https://www.wikipedia.org,2026-02-23,2025-11-07,Mismatch
+dc/base/CensusACS5YearSurvey,CensusACS5YearSurvey,https://www.census.gov/programs-surveys/acs/data/data-via-ft...,2024-10-07,2025-01-24,Mismatch
+dc/base/CensusACS1YearSurvey,CensusACS5YearSurvey,https://www.census.gov/programs-surveys/acs/data/data-via-ft...,2024-10-07,2025-01-24,Mismatch
+dc/base/NASA_DCP30_CMIP5_Subnational_AggrDiffStats_LongRangeProjections,NASA_NEXDCP30,https://www.nccs.nasa.gov/services/data-collections/land-bas...,2026-03-19,2022-08-07,Mismatch
+dc/base/NASA_NEXDCP30_AggrYearsStats,NASA_NEXDCP30,https://www.nccs.nasa.gov/services/data-collections/land-bas...,2026-03-19,2022-08-07,Mismatch
+dc/base/NASA_NEXDCP30_AggrDiffStats,NASA_NEXDCP30,https://www.nccs.nasa.gov/services/data-collections/land-bas...,2026-03-19,2022-08-07,Mismatch
+dc/base/NASA_NEXDCP30,NASA_NEXDCP30,https://www.nccs.nasa.gov/services/data-collections/land-bas...,2026-03-19,2022-08-07,Mismatch
+dc/base/NASA_NEXGDDP_Country,NASA_NEXGDDP_IpccPlaces50,https://www.nccs.nasa.gov/services/data-collections/land-bas...,2026-03-19,2022-08-07,Mismatch
+dc/base/NASA_NEXGDDP_Subnational,NASA_NEXGDDP_IpccPlaces50,https://www.nccs.nasa.gov/services/data-collections/land-bas...,2026-03-19,2022-08-07,Mismatch
+dc/base/NASA_NEXGDDP_IpccPlaces50,NASA_NEXGDDP_IpccPlaces50,https://www.nccs.nasa.gov/services/data-collections/land-bas...,2026-03-19,2022-08-07,Mismatch
+dc/base/NASA_NEXGDDP_Subnational_AggrDiffStats,NASA_NEXGDDP_IpccPlaces50,https://www.nccs.nasa.gov/services/data-collections/land-bas...,2026-03-19,2022-08-07,Mismatch
+dc/base/NASA_NEXGDDP_IpccPlaces50_AggrDiffStats,NASA_NEXGDDP_IpccPlaces50,https://www.nccs.nasa.gov/services/data-collections/land-bas...,2026-03-19,2022-08-07,Mismatch
+dc/base/NASA_NEXGDDP_Subnational_AggrOverTimeOnStatsAcrossModels,NASA_NEXGDDP_IpccPlaces50,https://www.nccs.nasa.gov/services/data-collections/land-bas...,2026-03-19,2022-08-07,Mismatch
+dc/base/NASA_NEXGDDP_Country_AggrDiffStats,NASA_NEXGDDP_IpccPlaces50,https://www.nccs.nasa.gov/services/data-collections/land-bas...,2026-03-19,2022-08-07,Mismatch
+dc/base/NASA_NEXGDDP_Subnational_AggrStatsAcrossModels,NASA_NEXGDDP_IpccPlaces50,https://www.nccs.nasa.gov/services/data-collections/land-bas...,2026-03-19,2022-08-07,Mismatch
+dc/base/NASA_NEXGDDP_CMIP6_Subnational_AggrYearsStats,NASA_NEXGDDP_CMIP6_Subnational_Histogram,https://www.nccs.nasa.gov/services/data-collections/land-bas...,2026-03-19,2023-08-25,Mismatch
+dc/base/NASA_NEXGDDP_CMIP6_Subnational_Histogram,NASA_NEXGDDP_CMIP6_Subnational_Histogram,https://www.nccs.nasa.gov/services/data-collections/land-bas...,2026-03-19,2023-08-25,Mismatch
+dc/base/NASA_NEXGDDP_CMIP6_Subnational,NASA_NEXGDDP_CMIP6_Subnational_Histogram,https://www.nccs.nasa.gov/services/data-collections/land-bas...,2026-03-19,2023-08-25,Mismatch
+dc/base/NASA_NEXGDDP_CMIP6_Subnational_AggrDiffStats_LongRangeProjections,NASA_NEXGDDP_CMIP6_Subnational_Histogram,https://www.nccs.nasa.gov/services/data-collections/land-bas...,2026-03-19,2023-08-25,Mismatch
+dc/base/NASA_NEXGDDP_CMIP6_IpccPlaces50_AggrStatsAcrossModels,NASA_NEXGDDP_CMIP6_Subnational_Histogram,https://www.nccs.nasa.gov/services/data-collections/land-bas...,2026-03-19,2023-08-25,Mismatch
+dc/base/NASA_NEXGDDP_CMIP6_IpccPlaces50_AggrYearsStats,NASA_NEXGDDP_CMIP6_Subnational_Histogram,https://www.nccs.nasa.gov/services/data-collections/land-bas...,2026-03-19,2023-08-25,Mismatch
+dc/base/NASA_NEXGDDP_CMIP6_IpccPlaces50,NASA_NEXGDDP_CMIP6_Subnational_Histogram,https://www.nccs.nasa.gov/services/data-collections/land-bas...,2026-03-19,2023-08-25,Mismatch
+dc/base/NASA_NEXGDDP_CMIP6_Subnational_AggrOverTimeOnStatsAcrossModels,NASA_NEXGDDP_CMIP6_Subnational_Histogram,https://www.nccs.nasa.gov/services/data-collections/land-bas...,2026-03-19,2023-08-25,Mismatch
+dc/base/NASA_NEXGDDP_CMIP6_IpccPlaces50_AggrDiffStats,NASA_NEXGDDP_CMIP6_Subnational_Histogram,https://www.nccs.nasa.gov/services/data-collections/land-bas...,2026-03-19,2023-08-25,Mismatch
+dc/base/NASA_NEXGDDP_CMIP6_Subnational_AggrDiffStats,NASA_NEXGDDP_CMIP6_Subnational_Histogram,https://www.nccs.nasa.gov/services/data-collections/land-bas...,2026-03-19,2023-08-25,Mismatch
+dc/base/NASA_NEXGDDP_CMIP6_Subnational_PDFs,NASA_NEXGDDP_CMIP6_Subnational_Histogram,https://www.nccs.nasa.gov/services/data-collections/land-bas...,2026-03-19,2023-08-25,Mismatch
+dc/base/NASA_NEXGDDP_CMIP6_Subnational_Prediction_Diffs,NASA_NEXGDDP_CMIP6_Subnational_Histogram,https://www.nccs.nasa.gov/services/data-collections/land-bas...,2026-03-19,2023-08-25,Mismatch
+dc/base/NASA_NEXGDDP_CMIP6_IpccPlaces50_AggrOverTimeOnStatsAcrossModels,NASA_NEXGDDP_CMIP6_Subnational_Histogram,https://www.nccs.nasa.gov/services/data-collections/land-bas...,2026-03-19,2023-08-25,Mismatch
+dc/base/BEAGDPv2,BEAGDPv2,https://www.bea.gov/,2026-03-13,2026-02-03,Year Match Only
+dc/base/NOAA_EPA_Observed_Historical_Weather,NOAA_EPA_Observed_Historical_Weather,https://www.noaa.gov/,2026-03-20,2024-03-25,Mismatch
+dc/base/BLS_QCEW,BLS_QCEW,https://www.bls.gov/qcew/,2026-01-28,2025-11-10,Mismatch
+dc/base/USEconomicCensus,USEconomicCensus,https://www.census.gov/programs-surveys/economic-census.html,2026-03-17,2022-06-02,Mismatch
+dc/base/CDCDiabetes,CDCDiabetes,https://gis.cdc.gov/grasp/diabetes/DiabetesAtlas.html,2026-03-11,2024-01-12,Mismatch
+dc/base/CDC500,CDC500_States,https://www.cdc.gov/places/index.html,2025-02-03,2026-02-02,Mismatch
+dc/base/USDecennialCensus_RedistrictingRelease,USDecennialCensus_RedistrictingRelease,https://www.census.gov/programs-surveys/decennial-census/abo...,2023-11-29,2022-06-02,Mismatch
+dc/base/CDCMortality,CDCMortality,https://wonder.cdc.gov/mcd.html,2026-03-24,2022-06-02,Mismatch
+dc/base/NASA_NEXGDDP_CMIP6_Subnational_AggrStatsAcrossModels,NASA_NEXGDDP_CMIP6_Subnational_Histogram,https://www.nccs.nasa.gov/services/data-collections/land-bas...,2026-03-19,2023-08-25,Mismatch
+dc/base/CDCWonderNatality,CDCWonderNatality,https://wonder.cdc.gov/natality.html,2026-03-24,2023-12-18,Mismatch
+dc/base/DEA_ARCOS,DEA_ARCOS,https://www.deadiversion.usdoj.gov/arcos/retail_drug_summary...,2025-11-12,2022-06-02,Mismatch
+dc/base/Dartmouth_Atlas_Medicare,Dartmouth_Atlas_Medicare,https://atlasdata.dartmouth.edu,2024-05-08,2022-06-02,Mismatch
+dc/base/EPA_AirPollutantEmission_Level1,EPA_AirPollutantEmission_Level1,https://www.epa.gov/air-emissions-inventories/national-emiss...,2025-04-16,2025-10-01,Year Match Only
+dc/base/EPA_GHGRP,EPA_GHGRP_ParentCompanies,https://www.epa.gov/ghgreporting,2026-03-24,2022-06-02,Mismatch
+dc/base/EPA_ParentCompanies,EPA_GHGRP_ParentCompanies,https://www.epa.gov/ghgreporting,2026-03-24,2022-06-02,Mismatch
+dc/base/EPACriteriaAirPollutants_Stations,EPAAirQualityIndex,https://aqs.epa.gov/aqsweb/airdata/download_files.html,2025-12-04,2025-02-05,Year Match Only
+dc/base/EPA_GHGRP_ParentCompanies_Ownership,EPA_GHGRP_ParentCompanies,https://www.epa.gov/ghgreporting,2026-03-24,2022-06-02,Mismatch
+dc/base/EPA_GHGRP_ParentCompanies,EPA_GHGRP_ParentCompanies,https://www.epa.gov/ghgreporting,2026-03-24,2022-06-02,Mismatch
+dc/base/EPACriteriaAirPollutants,EPAAirQualityIndex,https://aqs.epa.gov/aqsweb/airdata/download_files.html,2025-12-04,2025-02-05,Year Match Only
+dc/base/EPA_USAirPollutantEmissionTrends_County,EPA_USAirPollutantEmissionTrends_NationalAndState,https://www.epa.gov/air-emissions-inventories/air-pollutant-...,2025-04-28,2026-01-15,Mismatch
+dc/base/EPA_USAirPollutantEmissionTrends_NationalAndState,EPA_USAirPollutantEmissionTrends_NationalAndState,https://www.epa.gov/air-emissions-inventories/air-pollutant-...,2025-04-28,2026-01-15,Mismatch
+dc/base/RFF_ClimateWildfireSmoke_EchoLab,RFF_ClimateWildfireSmoke_EchoLab,https://www.stanfordecholab.com/wildfire_smoke,2026-02-19,2023-04-17,Mismatch
+dc/base/StormNOAA,StormNOAA,https://www.ncdc.noaa.gov/,2026-01-30,2025-10-25,Mismatch
+dc/base/RFF_ClimateWildfireSmoke_ParksAbatzoglou,RFF_ClimateWildfireSmoke_ParksAbatzoglou,https://doi.org/10.5061/dryad.tmpg4f4x1,2020-10-20,2023-04-17,Mismatch

@@ -1,0 +1,10 @@
+id,prov_id,provenance_url,status,last_modified_timestamp,source_method
+dc/base/IndiaNSS_HealthAilments_StatVarAgg,dc/base/IndiaNSS_HealthAilments_StatVarAgg,https://ndap.niti.gov.in/dataset/7300,SUCCESS,2026-02-16,DIRECT_HTTP
+dc/base/IndiaNSS_HealthAilments,dc/base/IndiaNSS_HealthAilments,https://ndap.niti.gov.in/dataset/7300,SUCCESS,2026-02-16,DIRECT_HTTP
+dc/base/India_LifeExpectancy,dc/base/India_LifeExpectancy,https://ndap.niti.gov.in/dataset/7375,SUCCESS,2026-02-16,DIRECT_HTTP
+dc/base/India_NFHS,dc/base/India_NFHS,"https://ndap.niti.gov.in/dataset/6821, https://ndap.niti.gov.in/dataset/7034, https://ndap.niti.gov.in/dataset/6822",SUCCESS,2026-02-16,DIRECT_HTTP
+dc/base/NITIIndiaPopulationProjection,dc/base/NITIIndiaPopulationProjection,"https://ndap.niti.gov.in/dataset/7208, https://ndap.niti.gov.in/dataset/7209",SUCCESS,2026-02-16,DIRECT_HTTP
+dc/base/CanadaStatistics,dc/base/CanadaStatistics,https://www150.statcan.gc.ca/n1/en/type/data?MM=1,SUCCESS,2026-03-24,PAGE_CONTENT
+dc/base/NOAA_CoastWatch_SeaSurfaceSalinity,dc/base/NOAA_CoastWatch_SeaSurfaceSalinity,https://coastwatch.noaa.gov/erddap/griddap/noaacwSMAPsss3Daily.html,SUCCESS,2023-04-06,SITEMAP
+dc/base/DEA_DrugCodes,dc/base/DEA_DrugCodes,https://www.deadiversion.usdoj.gov/21cfr/cfr/2108cfrt.htm,SUCCESS,2025-11-12,HTTP_HEADER
+dc/base/NYT_COVID19,dc/base/NYT_COVID19,https://www.nytimes.com/article/coronavirus-county-data-us.html,SUCCESS,2021-06-23,HTML_SCRAPE
