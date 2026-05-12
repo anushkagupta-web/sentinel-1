@@ -1,4 +1,19 @@
 # =============================================================================
+# PROVENANCE URL CHECKER - REQUIREMENTS (v6.0)
+# =============================================================================
+#
+# NEW in v6.0:
+#   - PyPDF2 (PDF metadata extraction)
+#   - GitHub API support (uses existing requests library)
+#   - Dataset API handlers (CKAN, Socrata, ArcGIS - uses existing requests)
+#   - Portal handlers (Census, EPA, NASA - uses existing beautifulsoup4)
+#
+# Installation:
+#   pip install -r requirements.txt
+#
+# =============================================================================
+
+# =============================================================================
 # Core Dependencies
 # =============================================================================
 
@@ -23,6 +38,13 @@ beautifulsoup4>=4.11.0
 
 # Fast XML/HTML parser (used by BeautifulSoup)
 lxml>=4.9.0
+
+# =============================================================================
+# NEW v6.0: PDF Processing Dependencies
+# =============================================================================
+
+# PDF metadata extraction (for method_pdf_metadata)
+PyPDF2>=3.0.0
 
 # =============================================================================
 # Browser Automation (Selenium)
@@ -76,3 +98,22 @@ colorama>=0.4.6
 
 # For progress bars (optional)
 tqdm>=4.65.0
+
+# =============================================================================
+# v6.0 NOTES: Additional Configuration
+# =============================================================================
+
+# GITHUB_TOKEN (Optional - for Git repository analysis method)
+# - Not a library, but an environment variable
+# - Add to .env file: GITHUB_TOKEN=your_github_personal_access_token
+# - Without token: Git method will work but with rate limits (60 requests/hour)
+# - With token: 5000 requests/hour
+# - Get token from: https://github.com/settings/tokens
+
+# DATASET API METHODS (No additional libraries needed)
+# - CKAN API: Uses requests library (already installed)
+# - Socrata API: Uses requests library (already installed)
+# - ArcGIS API: Uses requests library (already installed)
+
+# PORTAL HANDLERS (No additional libraries needed)
+# - Census, Data.gov, EPA, NASA handlers use beautifulsoup4 (already installed)

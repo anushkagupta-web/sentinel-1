@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:data.who.int)",
+      "WebFetch(domain:caaspp-elpac.ets.org)",
+      "Bash(python:*)",
+      "Bash(git remote set-url:*)",
+      "Bash(git push:*)"
+    ]
+  }
+}

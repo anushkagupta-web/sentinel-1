@@ -1,0 +1,14 @@
+id,prov_id,provenance_url,status,last_modified_timestamp
+dc/base/USMonthlyRetailSales,dc/base/USMonthlyRetailSales,https://www.census.gov/retail/index.html,SUCCESS,2019-04-15
+dc/base/USCensusPEP_Sex,dc/base/USCensusPEP_Sex,https://www.census.gov/programs-surveys/popest.html,SUCCESS,2024-12-31
+dc/base/CensusCountyBusinessPatterns,dc/base/CensusCountyBusinessPatterns,https://www.census.gov/programs-surveys/cbp.html,SUCCESS,2025-12-22
+dc/base/USCensusPEP_AgeSexRaceHispanicOrigin,dc/base/USCensusPEP_AgeSexRaceHispanicOrigin,https://www2.census.gov/programs-surveys/popest/tables,SUCCESS,2026-04-06
+dc/base/USCensusPEP_PopulationEstimatebyRace,dc/base/USCensusPEP_PopulationEstimatebyRace,https://www.census.gov/programs-surveys/popest.html,SUCCESS,2024-12-31
+dc/base/FAO_Currency_statvar,dc/base/FAO_Currency_statvar,https://www.fao.org/faostat/en/#data/PE/metadata,SUCCESS,2026-04-02
+dc/base/EPA_USAirPollutantEmissionTrends_NationalAndState,dc/base/EPA_USAirPollutantEmissionTrends_NationalAndState,https://www.epa.gov/air-emissions-inventories/air-pollutant-emissions-trends-data,SUCCESS,2026-04-07
+dc/base/CRDC_Education_Discipline_Attendance,dc/base/CRDC_Education_Discipline_Attendance,https://civilrightsdata.ed.gov/data,SUCCESS,2025-09-23
+dc/base/WHO_COVID19,dc/base/WHO_COVID19,https://data.who.int/dashboards/covid19/data?n=c,SUCCESS,2026-04-01
+dc/base/EPA_GHGRP,dc/base/EPA_GHGRP,https://www.epa.gov/ghgreporting,SUCCESS,2026-03-30
+dc/base/MexicoCensus_AA2,dc/base/MexicoCensus_AA2,https://data.humdata.org/dataset/cod-ps-mex,SUCCESS,2025-05-05
+dc/base/EPA_AirPollutantEmission_Level1,dc/base/EPA_AirPollutantEmission_Level1,https://www.epa.gov/air-emissions-inventories/national-emissions-inventory-nei,SUCCESS,2026-03-26
+dc/base/NOAA_GPCC_StandardardizedPrecipitationIndex,dc/base/NOAA_GPCC_StandardardizedPrecipitationIndex,https://www.drought.gov/data-maps-tools/global-precipitation-climatology-centre-gpcc-standardized-precipitation-index-spi,SUCCESS,2026-03-10

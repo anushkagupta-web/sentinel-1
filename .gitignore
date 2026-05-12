@@ -77,13 +77,6 @@ Thumbs.db
 *.credentials
 *.secret
 
-# =============================================================================
-# Documentation/Notes (not for push)
-# =============================================================================
-fetch_remaining.md
-fetch_timestamps_best.md
-errorurl.md
-notfetched.md
-output1_explain.md
+
 
 

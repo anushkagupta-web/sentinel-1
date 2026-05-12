@@ -1,0 +1,149 @@
+id,prov_id,provenance_url,status,error_reason
+6,dc_import_6,https://cds.climate.copernicus.eu/cdsapp#!/dataset/reanalysis-era5-single-levels,FAILED,NO_DATE_FOUND_ALL_METHODS
+11,dc_import_11,https://censusindia.gov.in/census.website/data/census-tables ,FAILED,NO_DATE_FOUND_ALL_METHODS
+12,dc_import_12,https://censusindia.gov.in/census.website/data/census-tables ,FAILED,NO_DATE_FOUND_ALL_METHODS
+13,dc_import_13,https://mospi.gov.in/web/plfs ,FAILED,NO_DATE_FOUND_ALL_METHODS
+14,dc_import_14,https://censusindia.gov.in/census.website/data/census-tables ,FAILED,NO_DATE_FOUND_ALL_METHODS
+15,dc_import_15,https://censusindia.gov.in/census.website/data/census-tables ,FAILED,NO_DATE_FOUND_ALL_METHODS
+16,dc_import_16,https://censusindia.gov.in/census.website/data/census-tables ,FAILED,NO_DATE_FOUND_ALL_METHODS
+18,dc_import_18,https://ec.europa.eu/eurostat/web/health/data/database,FAILED,NO_DATE_FOUND_ALL_METHODS
+17,dc_import_17,https://ec.europa.eu/eurostat/web/health/data/database,FAILED,NO_DATE_FOUND_ALL_METHODS
+19,dc_import_19,https://ec.europa.eu/eurostat/web/health/data/database,FAILED,NO_DATE_FOUND_ALL_METHODS
+26,dc_import_26,https://www.federalreserve.gov/DataDownload/Choose.aspx?rel=H15,FAILED,NO_DATE_FOUND_ALL_METHODS
+27,dc_import_27,https://wonder.cdc.gov/cmf-icd10.html,FAILED,NO_DATE_FOUND_ALL_METHODS
+22,dc_import_22,https://data.cdc.gov/browse?category=Environmental+Health+%26+Toxicology%22,FAILED,NO_DATE_FOUND_ALL_METHODS
+30,dc_import_30,https://data.stadt-zuerich.ch/,FAILED,NO_DATE_FOUND_ALL_METHODS
+32,dc_import_32,https://www.stats.govt.nz/topics/population,FAILED,NO_DATE_FOUND_ALL_METHODS
+2,dc_import_2,https://www.ncdc.noaa.gov/stormevents/ftp.jsp,FAILED,NO_DATE_FOUND_ALL_METHODS
+33,dc_import_33,https://ec.europa.eu/eurostat/,FAILED,NO_DATE_FOUND_ALL_METHODS
+34,dc_import_34,https://data.stadt-zuerich.ch/,FAILED,NO_DATE_FOUND_ALL_METHODS
+44,dc_import_44,https://nigeria.opendataforafrica.org,FAILED,NO_DATE_FOUND_ALL_METHODS
+43,dc_import_43,https://ec.europa.eu/eurostat/,FAILED,NO_DATE_FOUND_ALL_METHODS
+45,dc_import_45,https://ec.europa.eu/eurostat/,FAILED,NO_DATE_FOUND_ALL_METHODS
+48,dc_import_48,https://www.fao.org/faostat/en/#data/PE/metadata,LOW_CONFIDENCE,CONFIDENCE_TOO_LOW_0.25
+46,dc_import_46,https://www150.statcan.gc.ca/n1/en/type/data?MM=1,LOW_CONFIDENCE,CONFIDENCE_TOO_LOW_0.28
+47,dc_import_47,https://ephtracking.cdc.gov/qrlist/35,FAILED,NO_DATE_FOUND_ALL_METHODS
+51,dc_import_51,https://ec.europa.eu/eurostat/,FAILED,NO_DATE_FOUND_ALL_METHODS
+55,dc_import_55,https://ec.europa.eu/eurostat/,FAILED,NO_DATE_FOUND_ALL_METHODS
+57,dc_import_57,https://ec.europa.eu/eurostat/web/education-and-training/database,FAILED,NO_DATE_FOUND_ALL_METHODS
+58,dc_import_58,https://ec.europa.eu/eurostat/,FAILED,NO_DATE_FOUND_ALL_METHODS
+61,dc_import_61,https://www.bls.gov/cpi,FAILED,NO_DATE_FOUND_ALL_METHODS
+64,dc_import_64,https://southafrica.opendataforafrica.org/,FAILED,NO_DATE_FOUND_ALL_METHODS
+66,dc_import_66,https://www.bls.gov/cpi/tables/supplemental-files/ ,FAILED,NO_DATE_FOUND_ALL_METHODS
+60,dc_import_60,https://quickstats.nass.usda.gov/,FAILED,NO_DATE_FOUND_ALL_METHODS
+70,dc_import_70,https://www.bls.gov/jlt/,FAILED,NO_DATE_FOUND_ALL_METHODS
+67,dc_import_67,https://www.statistikdatabasen.scb.se/pxweb/sv/ssd/,FAILED,NO_DATE_FOUND_ALL_METHODS
+62,dc_import_62,https://www.ibge.gov.br/en/statistics/social/population.html,LOW_CONFIDENCE,CONFIDENCE_TOO_LOW_0.25
+72,dc_import_72,https://www.bls.gov/ces,FAILED,NO_DATE_FOUND_ALL_METHODS
+68,dc_import_68,https://www.wikidata.org/wiki/Wikidata:Main_Page,LOW_CONFIDENCE,CONFIDENCE_TOO_LOW_0.25
+74,dc_import_74,https://rwanda.opendataforafrica.org/,FAILED,NO_DATE_FOUND_ALL_METHODS
+75,dc_import_75,https://www.bls.gov/ces,FAILED,NO_DATE_FOUND_ALL_METHODS
+77,dc_import_77,https://data.bis.org/topics/CBPOL,FAILED,NO_DATE_FOUND_ALL_METHODS
+73,dc_import_73,https://data.humdata.org/group/lka,FAILED,NO_DATE_FOUND_ALL_METHODS
+88,dc_import_88,https://www.bls.gov/cew,FAILED,NO_DATE_FOUND_ALL_METHODS
+79,dc_import_79,https://lcviewer.vito.be/2015,FAILED,NO_DATE_FOUND_ALL_METHODS
+89,dc_import_89,https://www.dol.gov/agencies/whd/state/minimum-wage/history,FAILED,NO_DATE_FOUND_ALL_METHODS
+84,dc_import_84,https://data.cdc.gov/browse?category=Environmental+Health+%26+Toxicology%22,FAILED,NO_DATE_FOUND_ALL_METHODS
+94,dc_import_94,https://www.bls.gov/cpi,FAILED,NO_DATE_FOUND_ALL_METHODS
+83,dc_import_83,https://data.cdc.gov/browse?category=Environmental+Health+%26+Toxicology%22,FAILED,NO_DATE_FOUND_ALL_METHODS
+96,dc_import_96,https://app.powerbigov.us/view?r=eyJrIjoiZmZmOWU2N2ItYzllZi00N2I4LWE1NGItYWMxNmU3MTJmYmY4IiwidCI6IjljZTcwODY5LTYwZGItNDRmZC1hYmU4LWQyNzY3MDc3ZmM4ZiJ9,FAILED,NO_DATE_FOUND_ALL_METHODS
+92,dc_import_92,https://data.cdc.gov/browse?category=Environmental+Health+%26+Toxicology%22,FAILED,NO_DATE_FOUND_ALL_METHODS
+95,dc_import_95,https://data.cdc.gov/browse?category=Environmental+Health+%26+Toxicology%22,FAILED,NO_DATE_FOUND_ALL_METHODS
+105,dc_import_105,https://www.bts.dot.gov/latch/latch-data,FAILED,NO_DATE_FOUND_ALL_METHODS
+110,dc_import_110,https://egypt.opendataforafrica.org,FAILED,NO_DATE_FOUND_ALL_METHODS
+111,dc_import_111,https://data.stadt-zuerich.ch/,FAILED,NO_DATE_FOUND_ALL_METHODS
+112,dc_import_112,https://ec.europa.eu/eurostat/,FAILED,NO_DATE_FOUND_ALL_METHODS
+113,dc_import_113,https://data.stadt-zuerich.ch/,FAILED,NO_DATE_FOUND_ALL_METHODS
+115,dc_import_115,https://data.stadt-zuerich.ch/,FAILED,NO_DATE_FOUND_ALL_METHODS
+114,dc_import_114,https://stats.oecd.org/viewhtml.aspx?datasetcode=WATER_TREAT&lang=en,FAILED,NO_DATE_FOUND_ALL_METHODS
+116,dc_import_116,https://data.stadt-zuerich.ch/,FAILED,NO_DATE_FOUND_ALL_METHODS
+118,dc_import_118,https://ec.europa.eu/eurostat/web/health/data/database,FAILED,NO_DATE_FOUND_ALL_METHODS
+119,dc_import_119,https://ec.europa.eu/eurostat/,FAILED,NO_DATE_FOUND_ALL_METHODS
+117,dc_import_117,https://ec.europa.eu/eurostat/web/health/data/database,FAILED,NO_DATE_FOUND_ALL_METHODS
+123,dc_import_123,https://www.fao.org/faostat/en/#data/PE/metadata,LOW_CONFIDENCE,CONFIDENCE_TOO_LOW_0.25
+121,dc_import_121,http://data.un.org/,FAILED,NO_DATE_FOUND_ALL_METHODS
+125,dc_import_125,https://www.nhtsa.gov/crash-data-systems/fatality-analysis-reporting-system,FAILED,NO_DATE_FOUND_ALL_METHODS
+127,dc_import_127,,SKIPPED,
+122,dc_import_122,https://data.stadt-zuerich.ch/,FAILED,NO_DATE_FOUND_ALL_METHODS
+120,dc_import_120,https://data.humdata.org/dataset/cod-ps-mex,FAILED,NO_DATE_FOUND_ALL_METHODS
+126,dc_import_126,https://famit.nwcg.gov/,FAILED,NO_DATE_FOUND_ALL_METHODS
+132,dc_import_132,https://datacommons.org/,FAILED,NO_DATE_FOUND_ALL_METHODS
+129,dc_import_129,https://www.openfigi.com/,FAILED,NO_DATE_FOUND_ALL_METHODS
+135,dc_import_135,https://datacommons.org/,FAILED,NO_DATE_FOUND_ALL_METHODS
+134,dc_import_134,https://www.google.com/,FAILED,NO_DATE_FOUND_ALL_METHODS
+142,dc_import_142,https://indiawris.gov.in/wiki/doku.php?id=water_quality_data_and_parameters ,FAILED,NO_DATE_FOUND_ALL_METHODS
+143,dc_import_143,https://dbie.rbi.org.in/DBIE/dbie.rbi?site=statistics ,FAILED,NO_DATE_FOUND_ALL_METHODS
+146,dc_import_146,https://mospi.gov.in/web/plfs ,FAILED,NO_DATE_FOUND_ALL_METHODS
+147,dc_import_147,https://mospi.gov.in/documents/213904/301563//NSS%20Report%20no.%20586%20Health%20in%20India1606229312083.pdf/d3724e8b-5970-0559-9ed9-12378a6cc7b3 ,FAILED,NO_DATE_FOUND_ALL_METHODS
+144,dc_import_144,https://dbie.rbi.org.in/DBIE/dbie.rbi?site=statistics,FAILED,NO_DATE_FOUND_ALL_METHODS
+152,dc_import_152,https://www.bls.gov/cps,FAILED,NO_DATE_FOUND_ALL_METHODS
+145,dc_import_145,https://hmis.nhp.gov.in/ ,FAILED,NO_DATE_FOUND_ALL_METHODS
+154,dc_import_154,https://www.nationsreportcard.gov/ndecore,FAILED,NO_DATE_FOUND_ALL_METHODS
+155,dc_import_155,https://nces.ed.gov/ccd/elsi/,FAILED,NO_DATE_FOUND_ALL_METHODS
+153,dc_import_153,https://nces.ed.gov/programs/digest/d22/tables/dt22_318.45.asp,FAILED,NO_DATE_FOUND_ALL_METHODS
+156,dc_import_156,https://nces.ed.gov/programs/digest/d22/tables/dt22_313.30.asp,FAILED,NO_DATE_FOUND_ALL_METHODS
+157,dc_import_157,https://nces.ed.gov/programs/digest/d22/tables/dt22_322.50.asp,FAILED,NO_DATE_FOUND_ALL_METHODS
+151,dc_import_151,https://www.eia.gov/opendata/qb.php ,FAILED,NO_DATE_FOUND_ALL_METHODS
+158,dc_import_158,https://www.eia.gov/opendata/qb.php,FAILED,NO_DATE_FOUND_ALL_METHODS
+159,dc_import_159,https://www.eia.gov/opendata/qb.php,FAILED,NO_DATE_FOUND_ALL_METHODS
+160,dc_import_160,https://www.eia.gov/opendata/qb.php,FAILED,NO_DATE_FOUND_ALL_METHODS
+164,dc_import_164,https://wonder.cdc.gov/ucd-icd10.html,FAILED,NO_DATE_FOUND_ALL_METHODS
+167,dc_import_167,https://www.cdc.gov/nndss/data-statistics/index.html,FAILED,NO_DATE_FOUND_ALL_METHODS
+166,dc_import_166,https://github.com/nytimes/covid-19-data/,FAILED,NO_DATE_FOUND_ALL_METHODS
+168,dc_import_168,https://datacommons.org/,FAILED,NO_DATE_FOUND_ALL_METHODS
+163,dc_import_163,https://map.feedingamerica.org,FAILED,NO_DATE_FOUND_ALL_METHODS
+171,dc_import_171,https://nces.ed.gov/ccd/elsi/,FAILED,NO_DATE_FOUND_ALL_METHODS
+177,dc_import_177,https://caaspp-elpac.ets.org/elpac/,FAILED,NO_DATE_FOUND_ALL_METHODS
+172,dc_import_172,https://data.cdc.gov/browse?category=Environmental+Health+%26+Toxicology%22,FAILED,NO_DATE_FOUND_ALL_METHODS
+180,dc_import_180,https://hazards.fema.gov/nri/,FAILED,NO_DATE_FOUND_ALL_METHODS
+185,dc_import_185,https://nces.ed.gov/ccd/elsi/,FAILED,NO_DATE_FOUND_ALL_METHODS
+184,dc_import_184,https://map.feedingamerica.org,FAILED,NO_DATE_FOUND_ALL_METHODS
+187,dc_import_187,https://www.bls.gov/lau/,FAILED,NO_DATE_FOUND_ALL_METHODS
+188,dc_import_188,https://www.fbi.gov/services/cjis/ucr/hate-crime,FAILED,NO_DATE_FOUND_ALL_METHODS
+189,dc_import_189,https://www.fbi.gov/services/cjis/ucr,FAILED,NO_DATE_FOUND_ALL_METHODS
+191,dc_import_191,https://www.fbi.gov/services/cjis/ucr/hate-crime,FAILED,NO_DATE_FOUND_ALL_METHODS
+192,dc_import_192,https://www.nhtsa.gov/crash-data-systems/fatality-analysis-reporting-system,FAILED,NO_DATE_FOUND_ALL_METHODS
+176,dc_import_176,https://www.eia.gov/opendata/qb.php,FAILED,NO_DATE_FOUND_ALL_METHODS
+196,dc_import_196,https://www.cdc.gov/nndss/data-statistics/index.html,FAILED,NO_DATE_FOUND_ALL_METHODS
+181,dc_import_181,https://www.eia.gov/opendata/qb.php,FAILED,NO_DATE_FOUND_ALL_METHODS
+199,dc_import_199,https://www.fec.gov/data/browse-data/?tab=bulk-data,FAILED,NO_DATE_FOUND_ALL_METHODS
+198,dc_import_198,https://data.cdc.gov/browse?category=Environmental+Health+%26+Toxicology%22,FAILED,NO_DATE_FOUND_ALL_METHODS
+149,dc_import_149,https://geosadak-pmgsy.nic.in/OpenData ,FAILED,NO_DATE_FOUND_ALL_METHODS
+201,dc_import_201,https://data.cdc.gov/browse?category=Environmental+Health+%26+Toxicology%22,FAILED,NO_DATE_FOUND_ALL_METHODS
+202,dc_import_202,https://oui.doleta.gov/unemploy/DataDownloads.asp,FAILED,NO_DATE_FOUND_ALL_METHODS
+208,dc_import_208,https://www.eda.gov/performance/tools,FAILED,NO_DATE_FOUND_ALL_METHODS
+194,dc_import_194,https://www.eia.gov/opendata/qb.php,FAILED,NO_DATE_FOUND_ALL_METHODS
+212,dc_import_212,https://ethiopia.opendataforafrica.org/,FAILED,NO_DATE_FOUND_ALL_METHODS
+213,dc_import_213,https://datacommons.org/,FAILED,NO_DATE_FOUND_ALL_METHODS
+215,dc_import_215,https://kenya.opendataforafrica.org/,FAILED,NO_DATE_FOUND_ALL_METHODS
+217,dc_import_217,,SKIPPED,
+218,dc_import_218,https://cotedivoire.opendataforafrica.org/,FAILED,NO_DATE_FOUND_ALL_METHODS
+220,dc_import_220,https://www.bps.go.id/indikator/indikator/list_/da_03/,FAILED,NO_DATE_FOUND_ALL_METHODS
+219,dc_import_219,https://www.cbs.gov.il/en/Statistics/Pages/Generators/Time-Series-DataBank.aspx?level_1=4,FAILED,NO_DATE_FOUND_ALL_METHODS
+225,dc_import_225,,SKIPPED,
+224,dc_import_224,https://climatetrace.org/inventory,FAILED,NO_DATE_FOUND_ALL_METHODS
+227,dc_import_227,https://climatetrace.org/inventory,FAILED,NO_DATE_FOUND_ALL_METHODS
+230,dc_import_230,https://dashboard.e-stat.go.jp/graphSearch/graphSearchResult?selectedLFieldCd=02,FAILED,NO_DATE_FOUND_ALL_METHODS
+222,dc_import_222,https://admin.bayanat.ae/Dataset/DownloadDatasetResource?fileId=26585eaf-9a9c-486d-b773-fc51ef0204c9&resourceID=11243,FAILED,NO_DATE_FOUND_ALL_METHODS
+234,dc_import_234,https://databank.worldbank.org/source/subnational-population,FAILED,NO_DATE_FOUND_ALL_METHODS
+235,dc_import_235,https://uganda.opendataforafrica.org/,FAILED,NO_DATE_FOUND_ALL_METHODS
+237,dc_import_237,https://ec.europa.eu/eurostat/web/health/data/database,FAILED,NO_DATE_FOUND_ALL_METHODS
+232,dc_import_232,https://aplicacoes.cidadania.gov.br/vis/data3/data-explorer.php,FAILED,NO_DATE_FOUND_ALL_METHODS
+239,dc_import_239,https://data.oecd.org/air/air-and-ghg-emissions.htm,FAILED,NO_DATE_FOUND_ALL_METHODS
+238,dc_import_238,https://www.gov.br/inpe/pt-br/acesso-a-informacao/dados-abertos/,FAILED,NO_DATE_FOUND_ALL_METHODS
+243,dc_import_243,https://databank.worldbank.org/source/international-debt-statistics,FAILED,NO_DATE_FOUND_ALL_METHODS
+245,dc_import_245,https://data.one.org/data-dives/,FAILED,NO_DATE_FOUND_ALL_METHODS
+244,dc_import_244,https://github.com/owid/covid-19-data/tree/master/public/data/vaccinations,FAILED,NO_DATE_FOUND_ALL_METHODS
+204,dc_import_204,https://www.eia.gov/opendata/qb.php,FAILED,NO_DATE_FOUND_ALL_METHODS
+247,dc_import_247,https://sidra.ibge.gov.br/home/pnadct,FAILED,NO_DATE_FOUND_ALL_METHODS
+251,dc_import_251,https://github.com/dsfsi/data-commons-data/tree/master/data/budget%20data/csv/,FAILED,NO_DATE_FOUND_ALL_METHODS
+254,dc_import_254,,SKIPPED,
+256,dc_import_256,https://unstats.un.org/unsd/energystats/data/,FAILED,NO_DATE_FOUND_ALL_METHODS
+216,dc_import_216,https://kosis.kr/eng/statisticsList/statisticsListIndex.do,FAILED,NO_DATE_FOUND_ALL_METHODS
+259,dc_import_259,https://data.stadt-zuerich.ch/,FAILED,NO_DATE_FOUND_ALL_METHODS
+260,dc_import_260,https://aplicacoes.cidadania.gov.br/vis/data3/data-explorer.php,FAILED,NO_DATE_FOUND_ALL_METHODS
+248,dc_import_248,https://kosis.kr/eng/statisticsList/statisticsListIndex.do,FAILED,NO_DATE_FOUND_ALL_METHODS
+250,dc_import_250,https://kosis.kr/eng/statisticsList/statisticsListIndex.do,FAILED,NO_DATE_FOUND_ALL_METHODS
+252,dc_import_252,https://kosis.kr/eng/statisticsList/statisticsListIndex.do,FAILED,NO_DATE_FOUND_ALL_METHODS
+257,dc_import_257,https://en.www.inegi.org.mx/temas/,FAILED,NO_DATE_FOUND_ALL_METHODS
+261,dc_import_261,https://www.gso.gov.vn/en/px-web/?pxid=E0201&theme=Population%20and%20Employment,FAILED,NO_DATE_FOUND_ALL_METHODS

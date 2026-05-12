@@ -392,7 +392,7 @@ Compare file C1 path: Output/output_26_March_2026_2.csv
 This helps identify:
 - Consistency across runs
 - Impact of configuration changes
-- Improvement in accuracy with v5.0 features
+- Improvement in accuracy with v3 features
 
 ## Using the Comparison Tool
 
@@ -411,10 +411,10 @@ python compare_timestamps.py
 
 **2. Compare Different Versions**
 ```bash
-# Compare v4.1 output vs v5.0 output
-# O1: output_v4.1.csv
-# C1: output_v5.0.csv
-# Result: See improvement in v5.0
+# Compare v2 output vs v3 output
+# O1: output_v2.csv
+# C1: output_v3.csv
+# Result: See improvement in v3
 ```
 
 **3. A/B Testing Configuration Changes**
@@ -469,7 +469,7 @@ id,provenance_url
 | `status` | SUCCESS / FAILED / SKIPPED / LOW_CONFIDENCE |
 | `last_modified_timestamp` | Extracted timestamp (YYYY-MM-DD) |
 | `source_method` | Which method succeeded (HTTP_HEADER, PAGE_CONTENT, etc.) |
-| `confidence` | **NEW v5.0**: Confidence score (0.0-1.0) |
+| `confidence` | **NEW v2/v3**: Confidence score (0.0-1.0) |
 
 ### Failed Output: `Output_Failed_Urls/failed_urls_{date}_{number}.csv`
 
@@ -876,7 +876,7 @@ my_new_source:
 
 ## Dependencies
 
-### Required (for check_provenance_improved.py)
+### Required (for check_provenance_complete.py)
 
 ```bash
 pip install requests pandas python-dotenv beautifulsoup4 urllib3
@@ -934,7 +934,7 @@ Get your Groq API key from: https://console.groq.com/keys
 ### 1. Run Main Script
 
 ```bash
-# Process URLs (v5.0 with confidence scoring and voting)
+# Process URLs (v3 with confidence scoring and voting)
 python check_provenance_complete.py
 ```
 
